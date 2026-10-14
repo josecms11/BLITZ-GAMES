@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -77,7 +78,7 @@ body.ingame #pauseBtn{display:flex}
 #comboPop b{color:var(--flag)}
 #comboPop.show{animation:cpop .7s ease-out forwards}
 @keyframes cpop{0%{opacity:0;transform:translate(-50%,-30%) scale(.7)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-75%) scale(1)}}
-@media (max-width:600px){.stat .val{font-size:24px}.stat.yards .val{font-size:30px}.stat .lbl{font-size:8px}.hud-bar{gap:14px;padding-right:110px;justify-content:flex-start;padding-left:14px}.sysbtn{width:38px;height:38px}}
+@media (max-width:600px){.stat{min-width:38px}.stat .val{font-size:20px}.stat.yards .val{font-size:26px}.stat .lbl{font-size:7px;letter-spacing:.14em}.hud-bar{gap:8px;padding-right:96px;justify-content:flex-start;padding-left:10px}.sysbtn{width:36px;height:36px}#sys{gap:6px;right:8px}}
 .toggles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .toggles .btn{font-size:22px;padding:10px 18px 6px}
 .toggles .btn.off,.set-grid .btn.off{opacity:.5}
@@ -91,7 +92,17 @@ body.ingame #pauseBtn{display:flex}
 .best-stat.beat .val{color:var(--flag);animation:beatGlow .8s ease-in-out infinite alternate}
 .best-stat.beat .lbl{color:var(--flag)}
 @keyframes beatGlow{from{text-shadow:0 0 4px rgba(255,204,31,.3)}to{text-shadow:0 0 18px rgba(255,204,31,.9)}}
-.team-img{display:block;width:100%;height:auto;border-radius:6px;margin:8px 0 6px}
+.team-img{display:block;width:100%;height:auto;border-radius:6px;margin:0 0 8px}
+.team-panel{width:min(1180px,100%)}
+.team-grid{position:relative;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important;gap:10px;padding:4px 4px 8px;max-height:calc(100vh - 250px);max-height:calc(100dvh - 250px);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.tcard{padding:8px 8px 10px;text-align:center}
+.card.tcard .cname{font-size:22px;margin:0;white-space:nowrap;letter-spacing:.01em}
+.tcard .role{font-size:10px;letter-spacing:.1em;color:rgba(214,224,245,.75)}
+.tcard.sel{transform:translateY(-3px);box-shadow:0 0 0 2px var(--flag),0 10px 24px rgba(0,0,0,.35)}
+#teamPick b{color:#fff;font:600 26px var(--display);letter-spacing:.04em}
+#teamPick span{color:var(--flag);margin-left:6px}
+.sticky-row{position:sticky;bottom:0;padding:12px 0 4px;background:linear-gradient(0deg,rgba(4,9,22,.95) 60%,rgba(4,9,22,0));z-index:2}
+@media (max-width:600px){.team-grid{grid-template-columns:repeat(3,1fr)!important;gap:6px;max-height:calc(100vh - 250px);max-height:calc(100dvh - 250px)}.team-panel h2{font-size:32px;margin-bottom:2px;padding:0 44px}.team-panel .sub{margin-bottom:10px}#sTeam{padding-top:calc(env(safe-area-inset-top,0px) + 10px)}.tcard{padding:5px 5px 7px}.card.tcard .cname{font-size:15px}.tcard .role{display:none}#teamPick b{font-size:20px}}
 /* textos de juego */
 #popup,#bigText{position:fixed;left:50%;pointer-events:none;z-index:6;text-align:center;white-space:nowrap;opacity:0;font-family:var(--display);font-weight:700;line-height:.9}
 #popup{top:calc(env(safe-area-inset-top,0px) + 152px);font-size:clamp(26px,4.4vw,48px);color:var(--flag);text-shadow:0 3px 0 rgba(0,0,0,.45),0 0 24px rgba(255,204,31,.35)}
@@ -146,12 +157,12 @@ body.touch.ingame #touch{display:flex}
 .btn.mega:hover::after,.btn.mega:focus-visible::after{transition:transform .6s;transform:translateX(120%)}
 .btn.mega:hover{filter:brightness(1.07)}
 .loadout{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.lo{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px 12px;text-align:left;border-radius:6px;cursor:pointer;
+.lo{position:relative;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px 12px;text-align:left;border-radius:6px;cursor:pointer;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;transition:border-color .15s,background .15s,transform .15s}
 button.lo:hover,button.lo:focus-visible{border-color:var(--flag);background:rgba(255,204,31,.1);transform:translateY(-2px)}
 .lo.lo-best{cursor:default}
 .lo-k{font:700 12px var(--body);letter-spacing:.24em;color:rgba(214,224,245,.78)}
-.lo-v{font:600 32px/1 var(--display);margin-top:4px;white-space:nowrap}
+.lo-v{font:600 32px/1 var(--display);margin-top:4px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .lo-s{font:700 13px var(--body);letter-spacing:.1em;color:rgba(214,224,245,.85)}
 .lo-s b{color:var(--flag)}
 .lo-edit{position:absolute;right:12px;bottom:10px;font:700 11px var(--body);letter-spacing:.16em;color:var(--flag)}
@@ -212,6 +223,7 @@ body.touch #ctlCard{bottom:calc(env(safe-area-inset-bottom,0px) + 130px)}
 /* controles en partida */
 #ctlBtn{display:none}
 body.ingame #ctlBtn{display:flex}
+body.touch #ctlBtn,body.touch #liveCtl,body.touch #ctlCard{display:none!important}
 #ctlBtn.on{color:var(--flag);border-color:var(--flag)}
 #liveCtl{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:6;display:none;flex-direction:column;gap:5px;pointer-events:none;
   background:rgba(4,9,22,.55);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -225,6 +237,7 @@ body.ingame.ctl-on #liveCtl{display:flex}
 #liveCtl .tch-l{display:none}
 body.touch #liveCtl{left:50%;transform:translateX(-50%);bottom:auto;top:calc(env(safe-area-inset-top,0px) + 232px)}
 body.touch #liveCtl .kbd-l{display:none}body.touch #liveCtl .tch-l{display:flex}
+@media (max-width:600px){.lo-v{font-size:24px}.lo{padding:12px 12px 22px}.lo-edit{font-size:10px}.lo-s{font-size:11px}}
 /* panel de información */
 #sInfo{background:rgba(3,7,18,.82);align-items:flex-start}
 .info{margin:auto;display:flex;flex-direction:column;max-height:calc(100vh - 36px);width:min(880px,100%);background:rgba(8,15,32,.97);border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
@@ -285,7 +298,7 @@ h2{font:600 clamp(46px,9vw,74px)/.9 var(--display);margin:0 0 6px;letter-spacing
 .card .role{font:700 13px var(--body);letter-spacing:.12em;color:var(--flag)}
 .card .cname{font:600 44px/.95 var(--display);margin:4px 0 2px}
 .card p{margin:0 0 10px;color:var(--muted);font-size:15px;line-height:1.3;min-height:40px}
-.barrow{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:8px;font:600 12px var(--body);color:var(--muted);margin:5px 0}
+.barrow{display:grid;grid-template-columns:84px 1fr;align-items:center;gap:8px;font:600 12px var(--body);color:var(--muted);margin:5px 0}
 .bar{height:7px;background:rgba(243,241,232,.1);border-radius:2px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--chalk)}
 .card.sel .bar i{background:var(--flag)}
@@ -319,39 +332,38 @@ h2{font:600 clamp(46px,9vw,74px)/.9 var(--display);margin:0 0 6px;letter-spacing
 
 <div id="hud" class="hidden">
   <div class="hud-bar">
-    <div class="stat yards"><span class="val" id="hYards">0</span><span class="lbl">YARDS</span><i><b id="hYardBar"></b></i></div>
-    <div class="stat best-stat" id="hBestBox"><span class="val" id="hBest">0</span><span class="lbl">BEST</span></div>
-    <div class="stat"><span class="val" id="hLevel">1</span><span class="lbl">LEVEL</span></div>
-    <div class="stat score-stat" id="hScoreBox"><span class="val" id="hScore">0</span><span class="lbl">SCORE</span></div>
+    <div class="stat yards"><span class="val" id="hYards">0</span><span class="lbl">YARDAS</span><i><b id="hYardBar"></b></i></div>
+    <div class="stat best-stat" id="hBestBox"><span class="val" id="hBest">0</span><span class="lbl">RÉCORD</span></div>
+    <div class="stat"><span class="val" id="hLevel">1</span><span class="lbl">NIVEL</span></div>
+    <div class="stat score-stat" id="hScoreBox"><span class="val" id="hScore">0</span><span class="lbl">PUNTOS</span></div>
     <div class="stat combo-stat"><span class="val" id="hComboVal">x1</span><span class="lbl">COMBO</span><i id="hComboBar"></i></div>
   </div>
   <div class="hud-meters">
-    <div class="meter" id="hMeterBox"><i id="hMeter"></i><span id="hMeterLbl">FIRE</span></div>
-    <div class="stam" id="hStamBox" title="Stamina"><i id="hStam"></i></div>
+    <div class="meter" id="hMeterBox"><i id="hMeter"></i><span id="hMeterLbl">FUEGO</span></div>
+    <div class="stam" id="hStamBox" title="Resistencia"><i id="hStam"></i></div>
   </div>
   <div class="hud-sub"><div id="hStatus" class="status"></div></div>
 </div>
 <div id="comboPop"></div>
-<div id="liveCtl" aria-label="Controls">
-  <div class="lc kbd-l"><span class="k">◀</span><span class="k">▶</span><b>MOVE</b></div>
-  <div class="lc kbd-l"><span class="k">▶</span><span class="k">▶</span><b>JUKE</b><i>double-tap</i></div>
-  <div class="lc kbd-l"><span class="k">▲</span><b>SPRINT</b></div>
-  <div class="lc kbd-l"><span class="k w">SPACE</span><b>HURDLE</b></div>
-  <div class="lc kbd-l"><span class="k w">SHIFT</span><b>SPIN</b></div>
-  <div class="lc kbd-l"><span class="k">ESC</span><b>PAUSE</b></div>
-  <div class="lc tch-l"><span class="k">◀</span><span class="k">◀</span><b>DOUBLE-TAP = JUKE</b></div>
+<div id="liveCtl" aria-label="Controles">
+  <div class="lc kbd-l"><span class="k">◀</span><span class="k">▶</span><b>MOVERTE</b></div>
+  <div class="lc kbd-l"><span class="k">▶</span><span class="k">▶</span><b>JUKE</b><i>doble toque</i></div>
+  <div class="lc kbd-l"><span class="k">▲</span><b>ACELERAR</b></div>
+  <div class="lc kbd-l"><span class="k w">ESPACIO</span><b>SALTAR</b></div>
+  <div class="lc kbd-l"><span class="k w">SHIFT</span><b>GIRO</b></div>
+  <div class="lc kbd-l"><span class="k">ESC</span><b>PAUSA</b></div>
 </div>
 <div id="ctlCard" aria-hidden="true">
-  <div class="ci"><div class="ks"><span class="k">◀</span><span class="k">▶</span></div><b>MOVE</b></div>
+  <div class="ci"><div class="ks"><span class="k">◀</span><span class="k">▶</span></div><b>MOVERTE</b></div>
   <div class="ci"><div class="ks"><span class="k tap-a">▶</span><span class="k tap-b">▶</span></div><b>JUKE</b></div>
-  <div class="ci"><div class="ks"><span class="k" data-kb="SPACE" data-tc="JUMP">SPACE</span></div><b>HURDLE</b></div>
-  <div class="ci"><div class="ks"><span class="k" data-kb="⇧ SHIFT" data-tc="SPIN">⇧ SHIFT</span></div><b>SPIN</b></div>
-  <div class="ci"><div class="ks"><span class="k" data-kb="▲" data-tc="▲">▲</span></div><b>SPRINT</b></div>
+  <div class="ci"><div class="ks"><span class="k">ESPACIO</span></div><b>SALTAR</b></div>
+  <div class="ci"><div class="ks"><span class="k">⇧ SHIFT</span></div><b>GIRO</b></div>
+  <div class="ci"><div class="ks"><span class="k">▲</span></div><b>ACELERAR</b></div>
 </div>
 <div id="sys">
-  <button id="pauseBtn" class="sysbtn" aria-label="Pause" title="Pause (Esc)"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
-  <button id="ctlBtn" class="sysbtn" aria-label="Show controls" title="Controls"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 10h2M10 10h2M14 10h2M18 10h0M7 14h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  <button id="muteBtn" class="sysbtn" aria-label="Sound" title="Sound"></button>
+  <button id="pauseBtn" class="sysbtn" aria-label="Pausa" title="Pausa (Esc)"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+  <button id="ctlBtn" class="sysbtn" aria-label="Mostrar controles" title="Controles"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 10h2M10 10h2M14 10h2M18 10h0M7 14h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <button id="muteBtn" class="sysbtn" aria-label="Sonido" title="Sonido"></button>
 </div>
 <div id="popup"></div>
 <div id="bigText"></div>
@@ -360,35 +372,35 @@ h2{font:600 clamp(46px,9vw,74px)/.9 var(--display);margin:0 0 6px;letter-spacing
 
 <div id="touch">
   <div class="tc">
-    <button class="tbtn" data-act="left" aria-label="Izquierda">◀<small>LEFT</small></button>
-    <button class="tbtn" data-act="right" aria-label="Derecha">▶<small>RIGHT</small></button>
+    <button class="tbtn" data-act="left" aria-label="Izquierda">◀<small>IZQ</small></button>
+    <button class="tbtn" data-act="right" aria-label="Derecha">▶<small>DER</small></button>
   </div>
   <div class="tc">
     <div class="tcol">
-      <button class="tbtn sm" data-act="forward" aria-label="Sprint">▲<small>FORWARD</small></button>
-      <button class="tbtn sm spin" data-act="spin" id="spinBtn" aria-label="Spin">⟲<small>SPIN</small></button>
+      <button class="tbtn sm" data-act="forward" aria-label="Acelerar">▲<small>ACELERAR</small></button>
+      <button class="tbtn sm spin" data-act="spin" id="spinBtn" aria-label="Giro">⟲<small>GIRO</small></button>
     </div>
-    <button class="tbtn jump" data-act="jump" aria-label="Saltar">JUMP</button>
+    <button class="tbtn jump" data-act="jump" aria-label="Saltar">SALTAR</button>
   </div>
 </div>
 
 <section id="sMenu" class="screen active">
   <div class="menu">
     <div class="brand">
-      <div class="kicker">ENDLESS ARCADE FOOTBALL</div>
+      <div class="kicker">FUTBOL AMERICANO ARCADE</div>
       <h1 class="logo">BLITZ<span class="r">RUN</span></h1>
     </div>
-    <button class="btn go mega" id="btnPlay"><span class="mega-t">PLAY NOW</span><span class="mega-s" id="playSub">ACE · EMBERS</span></button>
+    <button class="btn go mega" id="btnPlay"><span class="mega-t">JUGAR</span><span class="mega-s" id="playSub">ACE · EMBERS</span></button>
     <div class="loadout">
-      <button class="lo" data-nav="select"><span class="lo-k">RUNNER</span><span class="lo-v" id="loRunner">ACE</span><span class="lo-s" id="loRole">BALANCED</span><span class="lo-edit">CHANGE</span></button>
-      <button class="lo" data-nav="team"><span class="lo-k">TEAM</span><span class="lo-v" id="loTeam">EMBERS</span><span class="lo-s" id="loCity">RED MESA</span><span class="lo-sw" id="loSw"></span><span class="lo-edit">CHANGE</span></button>
-      <button class="lo" id="loNameBtn"><span class="lo-k">NAME</span><span class="lo-v" id="loName">PLAYER 1</span><span class="lo-s">ON YOUR JERSEY</span><span class="lo-edit">EDIT</span></button>
-      <div class="lo lo-best"><span class="lo-k">BEST RUN</span><span class="lo-v" id="menuBest">0</span><span class="lo-s">YDS · <b id="menuRank">ROOKIE</b></span></div>
+      <button class="lo" data-nav="select"><span class="lo-k">CORREDOR</span><span class="lo-v" id="loRunner">ACE</span><span class="lo-s" id="loRole">EQUILIBRADO</span><span class="lo-edit">CAMBIAR</span></button>
+      <button class="lo" data-nav="team"><span class="lo-k">EQUIPO</span><span class="lo-v" id="loTeam">EMBERS</span><span class="lo-s" id="loCity">RED MESA</span><span class="lo-sw" id="loSw"></span><span class="lo-edit">CAMBIAR</span></button>
+      <button class="lo" id="loNameBtn"><span class="lo-k">NOMBRE</span><span class="lo-v" id="loName">JUGADOR 1</span><span class="lo-s">EN TU JERSEY</span><span class="lo-edit">EDITAR</span></button>
+      <div class="lo lo-best"><span class="lo-k">MEJOR CARRERA</span><span class="lo-v" id="menuBest">0</span><span class="lo-s">YDS · <b id="menuRank">NOVATO</b></span></div>
     </div>
     <div class="menu-row">
-      <button class="btn ghost" data-info="controls">HOW TO PLAY</button>
-      <button class="btn ghost" data-info="defense">DEFENSE</button>
-      <button class="btn ghost" data-info="settings">SETTINGS</button>
+      <button class="btn ghost" data-info="controls">CÓMO JUGAR</button>
+      <button class="btn ghost" data-info="defense">DEFENSA</button>
+      <button class="btn ghost" data-info="settings">AJUSTES</button>
     </div>
   </div>
 </section>
@@ -396,66 +408,66 @@ h2{font:600 clamp(46px,9vw,74px)/.9 var(--display);margin:0 0 6px;letter-spacing
 <section id="sInfo" class="screen">
   <div class="info">
     <div class="tabs">
-      <button class="tab" data-tab="controls">CONTROLS</button><button class="tab" data-tab="defense">DEFENSE</button>
-      <button class="tab" data-tab="scoring">SCORING</button><button class="tab" data-tab="settings">SETTINGS</button>
-      <button class="tab close" id="infoClose" aria-label="Close">✕</button>
+      <button class="tab" data-tab="controls">CONTROLES</button><button class="tab" data-tab="defense">DEFENSA</button>
+      <button class="tab" data-tab="scoring">PUNTOS</button><button class="tab" data-tab="settings">AJUSTES</button>
+      <button class="tab close" id="infoClose" aria-label="Cerrar">✕</button>
     </div>
     <div class="pane" data-pane="controls">
       <div class="kb kb-only">
         <div class="kb-item">
           <div class="kb-keys"><div class="arrows"><kbd class="k up">▲</kbd><kbd class="k left">◀</kbd><kbd class="k down">▼</kbd><kbd class="k right">▶</kbd></div></div>
-          <div class="kb-txt"><b>MOVE</b><span><em>◀ ▶</em> slide left / right · <em>▲</em> sprint (burns stamina) · <em>▼</em> brake</span><small>W A S D work too</small></div>
+          <div class="kb-txt"><b>MOVERTE</b><span><em>◀ ▶</em> izquierda / derecha · <em>▲</em> acelerar (gasta resistencia) · <em>▼</em> frenar</span><small>TAMBIÉN FUNCIONAN W A S D</small></div>
           <svg class="kb-ico" viewBox="0 0 64 64"><path d="M8 32h48M8 32l10-9M8 32l10 9M56 32l-10-9M56 32l-10 9" /></svg>
         </div>
         <div class="kb-item">
           <div class="kb-keys"><kbd class="k tap tap-a">▶</kbd><kbd class="k tap tap-b">▶</kbd></div>
-          <div class="kb-txt"><b>JUKE</b><span>Double-tap <em>◀</em> or <em>▶</em> <strong>super fast</strong>. A quick cut that fools defenders who already committed.</span></div>
+          <div class="kb-txt"><b>JUKE</b><span>Toca dos veces <em>◀</em> o <em>▶</em> <strong>muy rápido</strong>. Un corte corto que engaña al defensor que ya se lanzó.</span></div>
           <svg class="kb-ico" viewBox="0 0 64 64"><path d="M14 56V40l20-12V8M34 8l-7 8M34 8l7 8" /></svg>
         </div>
         <div class="kb-item">
-          <div class="kb-keys"><kbd class="k wide press">SPACE</kbd></div>
-          <div class="kb-txt"><b>JUMP / HURDLE</b><span>Leap over diving tackles (red ring) and low hits.</span></div>
+          <div class="kb-keys"><kbd class="k wide press">ESPACIO</kbd></div>
+          <div class="kb-txt"><b>SALTAR</b><span>Brinca sobre los defensores que se lanzan (anillo rojo) y los golpes bajos.</span></div>
           <svg class="kb-ico" viewBox="0 0 64 64"><path d="M6 52h52M10 50c10-34 34-34 44 0M44 42l10 8 2-12" /></svg>
         </div>
         <div class="kb-item">
           <div class="kb-keys"><kbd class="k wide press2">⇧ SHIFT</kbd></div>
-          <div class="kb-txt"><b>SPIN</b><span>Spin through a tackler. Doesn't work on linemen (orange ring). Short cooldown.</span></div>
+          <div class="kb-txt"><b>GIRO</b><span>Gira y atraviesa al defensor. No funciona con los linieros (anillo naranja). Se recarga en segundos.</span></div>
           <svg class="kb-ico" viewBox="0 0 64 64"><path d="M50 32a18 18 0 1 1-6-13.4M44 10v9h9" /></svg>
         </div>
         <div class="kb-item small">
           <div class="kb-keys"><kbd class="k">ESC</kbd></div>
-          <div class="kb-txt"><b>PAUSE</b><span>Pause, sound and graphics.</span></div>
+          <div class="kb-txt"><b>PAUSA</b><span>Pausa, sonido y gráficos.</span></div>
         </div>
       </div>
       <div class="kb touch-only">
-        <div class="kb-item"><div class="kb-keys"><kbd class="k">◀</kbd><kbd class="k">▶</kbd></div><div class="kb-txt"><b>MOVE</b><span>Hold to slide across the field.</span></div></div>
-        <div class="kb-item"><div class="kb-keys"><kbd class="k tap tap-a">▶</kbd><kbd class="k tap tap-b">▶</kbd></div><div class="kb-txt"><b>JUKE</b><span>Double-tap ◀ or ▶ super fast.</span></div></div>
-        <div class="kb-item"><div class="kb-keys"><kbd class="k">▲</kbd></div><div class="kb-txt"><b>SPRINT</b><span>Hold. Burns stamina.</span></div></div>
-        <div class="kb-item"><div class="kb-keys"><kbd class="k wide press">JUMP</kbd></div><div class="kb-txt"><b>HURDLE</b><span>Leap over diving tackles.</span></div></div>
-        <div class="kb-item"><div class="kb-keys"><kbd class="k wide press2">SPIN</kbd></div><div class="kb-txt"><b>SPIN</b><span>Spin through a tackler (not linemen).</span></div></div>
+        <div class="kb-item"><div class="kb-keys"><kbd class="k">◀</kbd><kbd class="k">▶</kbd></div><div class="kb-txt"><b>MOVERTE</b><span>Mantén presionado para moverte por el campo.</span></div></div>
+        <div class="kb-item"><div class="kb-keys"><kbd class="k tap tap-a">▶</kbd><kbd class="k tap tap-b">▶</kbd></div><div class="kb-txt"><b>JUKE</b><span>Toca dos veces ◀ o ▶ muy rápido.</span></div></div>
+        <div class="kb-item"><div class="kb-keys"><kbd class="k">▲</kbd></div><div class="kb-txt"><b>ACELERAR</b><span>Mantén presionado. Gasta resistencia.</span></div></div>
+        <div class="kb-item"><div class="kb-keys"><kbd class="k wide press">SALTAR</kbd></div><div class="kb-txt"><b>SALTAR</b><span>Brinca sobre los defensores que se lanzan.</span></div></div>
+        <div class="kb-item"><div class="kb-keys"><kbd class="k wide press2">GIRO</kbd></div><div class="kb-txt"><b>GIRO</b><span>Atraviesa a un defensor (no a los linieros).</span></div></div>
       </div>
     </div>
     <div class="pane" data-pane="defense">
       <div class="def-grid">
-        <div class="def"><i class="ring" style="--c:#f3f1e8"></i><b>LINEBACKER</b><span>Reads your line and closes in.</span></div>
-        <div class="def"><i class="ring" style="--c:#55d6ff"></i><b>SAFETY</b><span>Fastest defender. Chases you if you slow down.</span></div>
-        <div class="def"><i class="ring" style="--c:#ff8a1f"></i><b>LINEMAN</b><span>Huge and slow. Spin won't get you through.</span></div>
-        <div class="def"><i class="ring" style="--c:#ff4fd8"></i><b>CUTTER</b><span>Fakes one way, cuts the other.</span></div>
-        <div class="def warn"><i class="ring" style="--c:#ff3030"></i><b>RED RING</b><span>Diving tackle incoming. Juke or hurdle now.</span></div>
+        <div class="def"><i class="ring" style="--c:#f3f1e8"></i><b>LINEBACKER</b><span>Lee tu trayectoria y se te cierra.</span></div>
+        <div class="def"><i class="ring" style="--c:#55d6ff"></i><b>SAFETY</b><span>El más rápido. Te persigue si bajas la velocidad.</span></div>
+        <div class="def"><i class="ring" style="--c:#ff8a1f"></i><b>LINIERO</b><span>Enorme y lento. El giro no lo atraviesa.</span></div>
+        <div class="def"><i class="ring" style="--c:#ff4fd8"></i><b>FINTADOR</b><span>Amaga hacia un lado y corta hacia el otro.</span></div>
+        <div class="def warn"><i class="ring" style="--c:#ff3030"></i><b>ANILLO ROJO</b><span>Se va a lanzar a taclearte. Haz juke o salta ya.</span></div>
       </div>
     </div>
     <div class="pane" data-pane="scoring">
       <div class="def-grid">
-        <div class="def"><b>COMBO x2 → x10</b><span>Near miss, close call, hurdle, spin move, missed tackle. Keep the chain alive.</span></div>
-        <div class="def"><b>ON FIRE</b><span>Combos fill the FIRE bar: 2x points and you run through tackles.</span></div>
-        <div class="def"><b>TOUCHDOWN</b><span>Every 100 yards. Bonus grows with your level.</span></div>
-        <div class="def"><b>POWER-UPS</b><span>SHIELD blocks a hit · MAGNET pulls coins · 2X doubles points.</span></div>
+        <div class="def"><b>COMBO x2 → x10</b><span>¡Casi!, por un pelo, salto, giro y tackle fallido suman combo. No dejes que se corte la cadena.</span></div>
+        <div class="def"><b>EN LLAMAS</b><span>Los combos llenan la barra de FUEGO: puntos dobles y atropellas a los defensores.</span></div>
+        <div class="def"><b>TOUCHDOWN</b><span>Cada 100 yardas. El bono crece con tu nivel.</span></div>
+        <div class="def"><b>PODERES</b><span>ESCUDO aguanta un golpe · IMÁN atrae monedas · 2X duplica los puntos.</span></div>
       </div>
     </div>
     <div class="pane" data-pane="settings">
       <div class="set-grid">
-        <button class="btn" data-snd="music">MUSIC</button><button class="btn" data-snd="sfx">SOUND FX</button>
-        <button class="btn gfxBtn">GRAPHICS</button>
+        <button class="btn" data-snd="music">MÚSICA</button><button class="btn" data-snd="sfx">EFECTOS</button>
+        <button class="btn gfxBtn">GRÁFICOS</button>
       </div>
     </div>
   </div>
@@ -463,57 +475,57 @@ h2{font:600 clamp(46px,9vw,74px)/.9 var(--display);margin:0 0 6px;letter-spacing
 
 <section id="sSelect" class="screen">
   <div class="panel">
-    <h2>CHOOSE YOUR RUNNER</h2>
-    <p class="sub">Different body, different game.</p>
+    <h2>ELIGE TU CORREDOR</h2>
+    <p class="sub">Cada cuerpo juega distinto.</p>
     <div class="cards" id="charCards"></div>
-    <div class="row"><button class="btn" data-nav="menu">BACK</button><button class="btn go" id="btnCharOk">NEXT</button></div>
+    <div class="row"><button class="btn" data-nav="menu">ATRÁS</button><button class="btn go" id="btnCharOk">SIGUIENTE</button></div>
   </div>
 </section>
 
 <section id="sTeam" class="screen">
-  <div class="panel">
-    <h2>CHOOSE YOUR TEAM</h2>
-    <p class="sub">Your opponent is picked for contrast.</p>
-    <div class="cards" id="teamCards"></div>
-    <div class="row"><button class="btn" data-nav="select">BACK</button><button class="btn go" id="btnTeamOk">NEXT</button></div>
+  <div class="panel team-panel">
+    <h2>ELIGE TU EQUIPO</h2>
+    <p class="sub" id="teamPick"></p>
+    <div class="cards team-grid" id="teamCards"></div>
+    <div class="row sticky-row"><button class="btn" data-nav="select">ATRÁS</button><button class="btn go" id="btnTeamOk">SIGUIENTE</button></div>
   </div>
 </section>
 
 <section id="sName" class="screen">
   <div class="panel namebox">
-    <h2>PLAYER NAME</h2>
-    <p class="sub">Printed on the back of your jersey.</p>
-    <input id="nameInput" maxlength="12" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Player name">
-    <div class="row"><button class="btn" id="btnNameBack">BACK</button><button class="btn go" id="btnStart">KICKOFF</button></div>
+    <h2>TU NOMBRE</h2>
+    <p class="sub">Aparece en la espalda de tu jersey.</p>
+    <input id="nameInput" maxlength="12" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Nombre del jugador">
+    <div class="row"><button class="btn" id="btnNameBack">ATRÁS</button><button class="btn go" id="btnStart">¡A JUGAR!</button></div>
   </div>
 </section>
 
 <section id="sPause" class="screen">
   <div class="panel">
-    <h2>PAUSED</h2>
-    <div class="row"><button class="btn go" id="btnResume">RESUME</button><button class="btn" id="btnPauseCtl">CONTROLS</button><button class="btn" id="btnQuit">QUIT TO MENU</button></div>
-    <div class="toggles"><button class="btn" data-snd="music">MUSIC</button><button class="btn" data-snd="sfx">SOUND FX</button><button class="btn gfxBtn">GRAPHICS</button></div>
+    <h2>PAUSA</h2>
+    <div class="row"><button class="btn go" id="btnResume">CONTINUAR</button><button class="btn" id="btnPauseCtl">CONTROLES</button><button class="btn" id="btnQuit">SALIR AL MENÚ</button></div>
+    <div class="toggles"><button class="btn" data-snd="music">MÚSICA</button><button class="btn" data-snd="sfx">EFECTOS</button><button class="btn gfxBtn">GRÁFICOS</button></div>
   </div>
 </section>
 
 <section id="sOver" class="screen">
   <div class="panel">
-    <div class="kicker-hit">TACKLED</div>
+    <div class="kicker-hit">¡TACLEADO!</div>
     <div class="bigyards"><span id="oYards">0</span><small>YDS</small></div>
     <div class="rank" id="oRank"></div>
     <div class="best" id="oBy"></div>
-    <div id="oNew" class="newbest hidden">NEW BEST</div>
+    <div id="oNew" class="newbest hidden">NUEVO RÉCORD</div>
     <div class="summary">
-      <div><span>SCORE</span><b id="oScore">0</b></div>
-      <div><span>BEST COMBO</span><b id="oCombo">x1</b></div>
-      <div><span>PLAYS</span><b id="oPlays">0</b></div>
-      <div><span>COINS</span><b id="oCoins">0</b></div>
+      <div><span>PUNTOS</span><b id="oScore">0</b></div>
+      <div><span>MEJOR COMBO</span><b id="oCombo">x1</b></div>
+      <div><span>JUGADAS</span><b id="oPlays">0</b></div>
+      <div><span>MONEDAS</span><b id="oCoins">0</b></div>
     </div>
-    <div class="best">BEST<b id="oBest">0 yds</b></div>
+    <div class="best">RÉCORD<b id="oBest">0 yds</b></div>
     <div class="row">
-      <button class="btn go" id="btnAgain">PLAY AGAIN</button>
-      <button class="btn" data-nav="select">CHANGE RUNNER</button>
-      <button class="btn" data-nav="menu">MENU</button>
+      <button class="btn go" id="btnAgain">JUGAR DE NUEVO</button>
+      <button class="btn" data-nav="select">CAMBIAR CORREDOR</button>
+      <button class="btn" data-nav="menu">MENÚ</button>
     </div>
   </div>
 </section>
@@ -551,39 +563,87 @@ const pick = (arr) => arr[(Math.random() * arr.length) | 0];
 const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
 
 const CHARACTERS = [
-  { id: 'power', name: 'TANK', role: 'POWER', number: 44, build: 1.12,
-    desc: 'Shrugs off arm tackles. Breaks 1 tackle. Gets tired fast.',
+  { id: 'power', name: 'TANK', role: 'FUERZA', number: 44, build: 1.12,
+    desc: 'Se quita los tacleos de brazo. Rompe 1 tackle. Se cansa rápido.',
     accel: 6, maxSpeed: 15.5, cruiseMul: 0.96, latMax: 8.6, latAccel: 48, latDecel: 60,
     jumpForce: 12.2, radius: 0.62, breakCharges: 1, breakRegen: 24, spinCdMul: 1.2,
     staminaMax: 90, drainMul: 1.15, regenMul: 0.9, shrug: true, staggerKeep: 0.8,
-    bars: { SPEED: 2, ACCEL: 2, AGILITY: 2, STAMINA: 2, POWER: 5 } },
-  { id: 'balanced', name: 'ACE', role: 'BALANCED', number: 21, build: 1,
-    desc: 'All-around runner. Breaks 1 tackle every 40 s.',
+    bars: { VELOCIDAD: 2, ARRANQUE: 2, AGILIDAD: 2, AIRE: 2, FUERZA: 5 } },
+  { id: 'balanced', name: 'ACE', role: 'EQUILIBRADO', number: 21, build: 1,
+    desc: 'Corredor completo. Rompe 1 tackle cada 40 s.',
     accel: 9, maxSpeed: 17.5, cruiseMul: 1.0, latMax: 10.3, latAccel: 66, latDecel: 78,
     jumpForce: 13, radius: 0.55, breakCharges: 1, breakRegen: 40, spinCdMul: 1,
     staminaMax: 100, drainMul: 1, regenMul: 1, shrug: false, staggerKeep: 0.6,
-    bars: { SPEED: 3, ACCEL: 3, AGILITY: 3, STAMINA: 3, POWER: 3 } },
-  { id: 'speed', name: 'FLASH', role: 'SPEED', number: 1, build: 0.93,
-    desc: 'Explosive, fastest spin, most stamina. Any contact trips him.',
+    bars: { VELOCIDAD: 3, ARRANQUE: 3, AGILIDAD: 3, AIRE: 3, FUERZA: 3 } },
+  { id: 'speed', name: 'FLASH', role: 'VELOCIDAD', number: 1, build: 0.93,
+    desc: 'Explosivo, giro más rápido y más aire. Cualquier contacto lo tumba.',
     accel: 13, maxSpeed: 20, cruiseMul: 1.05, latMax: 12.2, latAccel: 90, latDecel: 98,
     jumpForce: 13.6, radius: 0.5, breakCharges: 0, breakRegen: 0, spinCdMul: 0.75,
     staminaMax: 115, drainMul: 0.9, regenMul: 1.2, shrug: false, staggerKeep: 0.5,
-    bars: { SPEED: 5, ACCEL: 5, AGILITY: 5, STAMINA: 4, POWER: 1 } }
+    bars: { VELOCIDAD: 5, ARRANQUE: 5, AGILIDAD: 5, AIRE: 4, FUERZA: 1 } }
 ];
 
-/* Tres uniformes: paletas de color inspiradas en equipos profesionales;
-   nombre, ciudad y emblema son 100 % originales (sin flechas, flores de lis ni figuras patrióticas). */
+/* 32 uniformes. Las combinaciones de color están inspiradas en los equipos profesionales;
+   nombre, ciudad y emblema son 100 % originales (ningún logotipo, mascota ni símbolo real). */
+function mkTeam(o) {
+  const a = o.accent, num = o.number || '#FFFFFF';
+  return Object.assign({
+    helmetStripe: a, mask: o.mask || '#F2F2F2', pantsStripe: a, socks: o.jersey, sockStripe: a, trim: a,
+    arm: o.jersey, glove: o.glove || '#FFFFFF', shoe: o.shoe || '#1a1a1a', number: num, numberOutline: o.outline || a,
+    endzone: o.endzone || null, emblemFill: o.emblemFill || a, emblemStroke: o.emblemStroke || num
+  }, o);
+}
 const TEAMS = [
-  { id: 'embers', name: 'EMBERS', city: 'Red Mesa', rival: 2, endzone: '#9e1024',          // rojo · dorado · blanco
-    jersey: '#E31837', number: '#FFFFFF', numberOutline: '#FFB81C', helmet: '#E31837', helmetStripe: '#FFB81C', mask: '#F2F2F2',
-    pants: '#FFFFFF', pantsStripe: '#E31837', socks: '#E31837', sockStripe: '#FFB81C', trim: '#FFB81C', arm: '#1d1d1d', glove: '#FFFFFF', shoe: '#1a1a1a' },
-  { id: 'onyx', name: 'ONYX', city: 'Delta City', rival: 0, endzone: '#1b1d22',            // negro · oro viejo · blanco
-    jersey: '#101820', number: '#D3BC8D', numberOutline: '#FFFFFF', helmet: '#D3BC8D', helmetStripe: '#101820', mask: '#101820',
-    pants: '#D3BC8D', pantsStripe: '#101820', socks: '#101820', sockStripe: '#D3BC8D', trim: '#D3BC8D', arm: '#101820', glove: '#D3BC8D', shoe: '#101820' },
-  { id: 'vortex', name: 'VORTEX', city: 'Bay Harbor', rival: 0, endzone: '#002244',        // azul marino · rojo · plata
-    jersey: '#002244', number: '#FFFFFF', numberOutline: '#C60C30', helmet: '#B0B7BC', helmetStripe: '#C60C30', mask: '#002244',
-    pants: '#B0B7BC', pantsStripe: '#C60C30', socks: '#002244', sockStripe: '#C60C30', trim: '#C60C30', arm: '#002244', glove: '#002244', shoe: '#FFFFFF' }
+  // los tres originales conservan su posición para no cambiar la selección guardada
+  mkTeam({ id: 'embers',   name: 'EMBERS',    city: 'Red Mesa',      emblem: 'flame',     jersey: '#E31837', helmet: '#E31837', pants: '#FFFFFF', accent: '#FFB81C', endzone: '#9e1024' }),
+  mkTeam({ id: 'onyx',     name: 'ONYX',      city: 'Delta City',    emblem: 'gem',       jersey: '#101820', helmet: '#D3BC8D', pants: '#D3BC8D', accent: '#D3BC8D', number: '#D3BC8D', outline: '#FFFFFF', mask: '#101820', glove: '#D3BC8D', endzone: '#1b1d22' }),
+  mkTeam({ id: 'vortex',   name: 'VORTEX',    city: 'Bay Harbor',    emblem: 'spiral',    jersey: '#002244', helmet: '#B0B7BC', pants: '#B0B7BC', accent: '#C60C30', mask: '#002244', glove: '#002244', shoe: '#FFFFFF', endzone: '#002244', emblemStroke: '#FFFFFF' }),
+  // AFC
+  mkTeam({ id: 'storm',    name: 'STORM',     city: 'North Falls',   emblem: 'snowflake', jersey: '#00338D', helmet: '#FFFFFF', pants: '#FFFFFF', accent: '#C60C30', mask: '#00338D' }),
+  mkTeam({ id: 'pulse',    name: 'PULSE',     city: 'Neon Coast',    emblem: 'pulse',     jersey: '#008E97', helmet: '#FFFFFF', pants: '#FFFFFF', accent: '#FC4C02', mask: '#005778', shoe: '#FFFFFF' }),
+  mkTeam({ id: 'surge',    name: 'SURGE',     city: 'Metro Port',    emblem: 'chevrons',  jersey: '#125740', helmet: '#125740', pants: '#FFFFFF', accent: '#FFFFFF', number: '#FFFFFF', outline: '#0d3d2d', mask: '#FFFFFF', emblemFill: '#FFFFFF', emblemStroke: '#0d3d2d' }),
+  mkTeam({ id: 'phantoms', name: 'PHANTOMS',  city: 'Harbor Point',  emblem: 'crescent',  jersey: '#241773', helmet: '#000000', pants: '#FFFFFF', accent: '#9E7C0C', mask: '#000000', glove: '#000000' }),
+  mkTeam({ id: 'scorch',   name: 'SCORCH',    city: 'River Bend',    emblem: 'sunburst',  jersey: '#FB4F14', helmet: '#000000', pants: '#FFFFFF', accent: '#000000', outline: '#000000', mask: '#000000', glove: '#000000', emblemFill: '#FFFFFF', emblemStroke: '#000000' }),
+  mkTeam({ id: 'forge',    name: 'FORGE',     city: 'Iron Bay',      emblem: 'anvil',     jersey: '#311D00', helmet: '#FF3C00', pants: '#FFFFFF', accent: '#FF3C00', mask: '#FFFFFF', glove: '#311D00' }),
+  mkTeam({ id: 'hive',     name: 'HIVE',      city: 'Ironwood',      emblem: 'hex',       jersey: '#101820', helmet: '#101820', pants: '#FFB612', accent: '#FFB612', number: '#FFB612', outline: '#FFFFFF', mask: '#101820', glove: '#FFB612', emblemStroke: '#101820' }),
+  mkTeam({ id: 'meteors',  name: 'METEORS',   city: 'Launch Bay',    emblem: 'comet',     jersey: '#03202F', helmet: '#03202F', pants: '#FFFFFF', accent: '#A71930', mask: '#A71930', glove: '#A71930' }),
+  mkTeam({ id: 'sentinels',name: 'SENTINELS', city: 'Crossroads',    emblem: 'shield',    jersey: '#002C5F', helmet: '#FFFFFF', pants: '#FFFFFF', accent: '#A2AAAD', mask: '#002C5F', emblemFill: '#FFFFFF', emblemStroke: '#002C5F' }),
+  mkTeam({ id: 'solar',    name: 'SOLAR',     city: 'Sunport',       emblem: 'horizon',   jersey: '#006778', helmet: '#000000', pants: '#FFFFFF', accent: '#D7A22A', mask: '#000000', glove: '#000000' }),
+  mkTeam({ id: 'tridents', name: 'TRIDENTS',  city: 'Riverton',      emblem: 'trident',   jersey: '#0C2340', helmet: '#FFFFFF', pants: '#FFFFFF', accent: '#4B92DB', mask: '#0C2340', glove: '#4B92DB', emblemStroke: '#C8102E' }),
+  mkTeam({ id: 'summit',   name: 'SUMMIT',    city: 'High Ridge',    emblem: 'mountain',  jersey: '#FB4F14', helmet: '#002244', pants: '#FFFFFF', accent: '#002244', outline: '#002244', mask: '#002244', glove: '#002244', shoe: '#FFFFFF', emblemFill: '#FFFFFF', emblemStroke: '#002244' }),
+  mkTeam({ id: 'eclipse',  name: 'ECLIPSE',   city: 'Neon Desert',   emblem: 'eclipse',   jersey: '#000000', helmet: '#A5ACAF', pants: '#A5ACAF', accent: '#A5ACAF', outline: '#A5ACAF', mask: '#000000', glove: '#000000', emblemStroke: '#000000' }),
+  mkTeam({ id: 'aeros',    name: 'AEROS',     city: 'Sunset Bay',    emblem: 'wing',      jersey: '#0080C6', helmet: '#0080C6', pants: '#FFFFFF', accent: '#FFC20E', mask: '#FFFFFF', shoe: '#FFFFFF' }),
+  // NFC
+  mkTeam({ id: 'glaciers', name: 'GLACIERS',  city: 'Frost Harbor',  emblem: 'crystal',   jersey: '#F4F5F7', helmet: '#869397', pants: '#869397', accent: '#041E42', number: '#041E42', outline: '#869397', mask: '#E6EAEE', shoe: '#F4F5F7', emblemFill: '#041E42', emblemStroke: '#FFFFFF', endzone: '#0b2a52' }),
+  mkTeam({ id: 'monarchs', name: 'MONARCHS',  city: 'Empire Bay',    emblem: 'crown',     jersey: '#0B2265', helmet: '#0B2265', pants: '#A2AAAD', accent: '#A71930', mask: '#A2AAAD', glove: '#0B2265' }),
+  mkTeam({ id: 'nomads',   name: 'NOMADS',    city: 'Old Harbor',    emblem: 'compass',   jersey: '#004C54', helmet: '#004C54', pants: '#FFFFFF', accent: '#A5ACAF', mask: '#000000', glove: '#000000', emblemStroke: '#000000' }),
+  mkTeam({ id: 'legion',   name: 'LEGION',    city: 'Marble Hill',   emblem: 'laurel',    jersey: '#5A1414', helmet: '#5A1414', pants: '#FFB612', accent: '#FFB612', outline: '#FFB612', mask: '#FFB612', glove: '#5A1414', emblemStroke: '#5A1414' }),
+  mkTeam({ id: 'ironclad', name: 'IRONCLAD',  city: 'Lakeshore',     emblem: 'anchor',    jersey: '#0B162A', helmet: '#0B162A', pants: '#FFFFFF', accent: '#C83803', mask: '#C83803', glove: '#0B162A' }),
+  mkTeam({ id: 'torque',   name: 'TORQUE',    city: 'Steel Lake',    emblem: 'gear',      jersey: '#0076B6', helmet: '#B0B7BC', pants: '#B0B7BC', accent: '#B0B7BC', outline: '#0b3d66', mask: '#0076B6', emblemStroke: '#0b3d66' }),
+  mkTeam({ id: 'tundra',   name: 'TUNDRA',    city: 'Frost Bay',     emblem: 'pine',      jersey: '#203731', helmet: '#FFB612', pants: '#FFB612', accent: '#FFB612', outline: '#FFB612', mask: '#203731', glove: '#FFB612', emblemStroke: '#203731' }),
+  mkTeam({ id: 'orbit',    name: 'ORBIT',     city: 'Nova Bay',      emblem: 'planet',    jersey: '#4F2683', helmet: '#4F2683', pants: '#FFFFFF', accent: '#FFC62F', mask: '#3B1D63', glove: '#4F2683' }),
+  mkTeam({ id: 'venom',    name: 'VENOM',     city: 'Red Clay',      emblem: 'fang',      jersey: '#A71930', helmet: '#000000', pants: '#FFFFFF', accent: '#A5ACAF', outline: '#000000', mask: '#000000', glove: '#000000', emblemFill: '#FFFFFF', emblemStroke: '#000000' }),
+  mkTeam({ id: 'prowlers', name: 'PROWLERS',  city: 'Pine Ridge',    emblem: 'claw',      jersey: '#0085CA', helmet: '#A5ACAF', pants: '#FFFFFF', accent: '#101820', outline: '#101820', mask: '#101820', glove: '#101820', emblemFill: '#101820', emblemStroke: '#FFFFFF' }),
+  mkTeam({ id: 'tempest',  name: 'TEMPEST',   city: 'Gulf Bay',      emblem: 'tornado',   jersey: '#D50A0A', helmet: '#34302B', pants: '#34302B', accent: '#FF7900', mask: '#34302B', glove: '#34302B' }),
+  mkTeam({ id: 'rogues',   name: 'ROGUES',    city: 'Golden Bay',    emblem: 'shards',    jersey: '#AA0000', helmet: '#B3995D', pants: '#B3995D', accent: '#B3995D', outline: '#000000', mask: '#AA0000', glove: '#B3995D', emblemStroke: '#000000' }),
+  mkTeam({ id: 'tsunami',  name: 'TSUNAMI',   city: 'Rain City',     emblem: 'wave',      jersey: '#002244', helmet: '#002244', pants: '#A5ACAF', accent: '#69BE28', mask: '#A5ACAF', glove: '#002244', emblemStroke: '#FFFFFF' }),
+  mkTeam({ id: 'zenith',   name: 'ZENITH',    city: 'Sun Valley',    emblem: 'radiant',   jersey: '#003594', helmet: '#003594', pants: '#FFFFFF', accent: '#FFA300', mask: '#FFFFFF' }),
+  mkTeam({ id: 'scorpions',name: 'SCORPIONS', city: 'Dust Valley',   emblem: 'stinger',   jersey: '#97233F', helmet: '#FFFFFF', pants: '#FFFFFF', accent: '#000000', outline: '#000000', mask: '#000000', glove: '#000000', emblemFill: '#000000', emblemStroke: '#FFFFFF' })
 ];
+/* rival automático: el equipo con el jersey más contrastante (distinto en color y en brillo) */
+(function assignRivals() {
+  const rgb = (h) => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  TEAMS.forEach((t, i) => {
+    const a = rgb(t.jersey), list = [];
+    TEAMS.forEach((u, j) => {
+      if (i === j) return; const b = rgb(u.jersey);
+      list.push([Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]) + Math.abs((a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2])) * 0.25, j]);
+    });
+    list.sort((x, y) => y[0] - x[0]);
+    t.rival = list[i % 6][1];   // uno de los 6 más contrastantes, para variar rivales
+  });
+})();
+
 
 /* dive = distancia a la que se lanza en clavado; chase = velocidad de persecución breve (solo safeties) */
 const DEF_TYPES = {
@@ -825,13 +885,13 @@ class DifficultyManager {
     return l;
   }
   get baseSpeed() { return 11.5 + Math.min(6.5, this.time * 0.06); }
-  get defLatMul() { return 1 + Math.min(0.45, (this.level - 1) * 0.06); }
-  get defApproachMul() { return 1 + Math.min(0.35, (this.level - 1) * 0.045); }
-  get reactMul() { return Math.max(0.6, 1 - (this.level - 1) * 0.045); }
+  get defLatMul() { return 1.04 + Math.min(0.48, (this.level - 1) * 0.065); }
+  get defApproachMul() { return 1.03 + Math.min(0.37, (this.level - 1) * 0.05); }
+  get reactMul() { return Math.max(0.58, 0.97 - (this.level - 1) * 0.048); }
   get predictAdd() { return Math.min(0.3, (this.level - 1) * 0.04); }
   get activateMul() { return Math.max(0.72, 1 - (this.level - 1) * 0.03); }   // reaccionan más tarde: menos tiempo para leerlos
   get chaseMul() { return 1 + Math.min(0.12, (this.level - 1) * 0.015); }
-  get spawnGap() { return Math.max(13, 32 - (this.level - 1) * 3); }
+  get spawnGap() { return Math.max(12.5, 31 - (this.level - 1) * 3); }
   get maxActive() { const t = [0, 3, 5, 6, 8, 9, 10, 11, 12, 13]; return this.level < t.length ? t[this.level] : 14; }
 }
 
@@ -898,28 +958,42 @@ function isPassable(list, z0, z1) {
 class Item { constructor() { this.active = false; } }
 class ItemManager {
   constructor(n) { this.items = Array.from({ length: n }, () => new Item()); this.reset(); }
-  reset() { for (const it of this.items) it.active = false; this.nextPowerZ = rand(320, 420); }
+  reset() { for (const it of this.items) it.active = false; this.nextPowerZ = rand(300, 380); this.nextCoinZ = 12; }
   acquire() { for (const it of this.items) if (!it.active) return it; return null; }
   add(kind, x, y, z) { const it = this.acquire(); if (!it) return; Object.assign(it, { active: true, kind, x, y, z, phase: Math.random() * 6 }); }
-  fillGap(z0, z1) {
-    const len = z1 - z0; if (len < 8) return;
-    if (z0 > this.nextPowerZ) {
-      this.add(pick(['shield', 'magnet', 'double', 'magnet', 'double']), rand(-8, 8), 1.3, (z0 + z1) / 2);
-      this.nextPowerZ = z0 + rand(380, 520);
-      return;
-    }
-    if (Math.random() > 0.8) return;
-    const n = Math.min(10, Math.floor(len / 2.4)); if (n < 3) return;
-    const shape = pick(['line', 'slant', 'curve', 'arc', 'arc']);
-    const x0 = rand(-8, 8), off = (len - (n - 1) * 2.4) / 2, s = x0 > 0 ? -1 : 1, w = rand(4, 8);
-    for (let i = 0; i < n; i++) {
-      const u = i / (n - 1); let x = x0, y = 1.0;
-      if (shape === 'slant') x = x0 + s * u * w;
-      else if (shape === 'curve') x = x0 + s * Math.sin(u * Math.PI) * w * 0.6;
-      else if (shape === 'arc') y = 1.0 + Math.sin(u * Math.PI) * 1.6;
-      this.add('coin', clamp(x, -10.5, 10.5), y, z0 + off + i * 2.4);
+  /* Generador propio: las monedas ya no dependen del hueco entre defensores (antes desaparecían al subir de nivel). */
+  spawnAhead(sim) {
+    const p = sim.player; let guard = 0;
+    while (p.z + CONFIG.SPAWN_AHEAD > this.nextCoinZ && guard++ < 4) {
+      const z0 = Math.max(this.nextCoinZ, p.z + 30);
+      if (z0 > this.nextPowerZ) {
+        this.add(pick(['shield', 'magnet', 'double', 'magnet', 'double']), this.safeX(sim, z0, z0 + 2), 1.3, z0);
+        this.nextPowerZ = z0 + rand(320, 440); this.nextCoinZ = z0 + rand(8, 12); continue;
+      }
+      const n = 5 + ((Math.random() * 5) | 0), len = (n - 1) * 2.4;
+      const shape = pick(['line', 'slant', 'curve', 'arc', 'arc']);
+      const x0 = this.safeX(sim, z0, z0 + len), s = x0 > 0 ? -1 : 1, w = rand(3, 6);
+      for (let i = 0; i < n; i++) {
+        const u = i / (n - 1); let x = x0, y = 1.0;
+        if (shape === 'slant') x = x0 + s * u * w;
+        else if (shape === 'curve') x = x0 + s * Math.sin(u * Math.PI) * w * 0.6;
+        else if (shape === 'arc') y = 1.0 + Math.sin(u * Math.PI) * 1.6;
+        this.add('coin', clamp(x, -10.5, 10.5), y, z0 + i * 2.4);
+      }
+      this.nextCoinZ = z0 + len + rand(10, 18);
     }
   }
+  /* carril lateral con más espacio libre respecto a los defensores de ese tramo */
+  safeX(sim, z0, z1) {
+    let best = rand(-8, 8), bestD = -1;
+    for (let k = 0; k < 7; k++) {
+      const x = rand(-9.5, 9.5); let dmin = 99;
+      for (const d of sim.defenders) if (d.active && d.z > z0 - 6 && d.z < z1 + 6) dmin = Math.min(dmin, Math.abs(d.homeX - x));
+      if (dmin > bestD) { bestD = dmin; best = x; }
+    }
+    return best;
+  }
+  fillGap() { /* ya no se usa: ver spawnAhead */ }
   update(dt, sim, ev) {
     const p = sim.player, mag = p.magnetTime > 0;
     for (const it of this.items) {
@@ -1152,7 +1226,7 @@ class Simulation {
       this.spawner.update(this);
       for (const d of this.defenders) if (d.active) DefenderAI.update(d, p, dt, this.difficulty, ev);
       this.collision.check(this, ev);
-      if (this.state === 'running') this.items.update(dt, this, ev);
+      if (this.state === 'running') { this.items.spawnAhead(this); this.items.update(dt, this, ev); }
       if (p.z >= this.nextTD) { ev.push({ type: 'touchdown', z: this.nextTD }); this.nextTD += CONFIG.TD_EVERY; }
       for (const d of this.defenders) if (d.active && p.z - d.z > CONFIG.CLEANUP_BEHIND) d.active = false;
       this.score.update(dt, this, ev);
@@ -1189,7 +1263,7 @@ if (typeof module !== 'undefined') module.exports = { CONFIG, CHARACTERS, TEAMS,
 const $ = (id) => document.getElementById(id);
 if (typeof THREE === 'undefined') {
   const e = $('err'); e.style.display = 'flex';
-  e.textContent = 'Could not load the 3D engine. Check your connection and reload.';
+  e.textContent = 'No se pudo cargar el motor 3D. Revisa tu conexión y recarga la página.';
   return;
 }
 
@@ -1526,34 +1600,114 @@ function mergePlain(geos) {
 /* ============ Emblemas ficticios de equipo ============ */
 function drawEmblem(g, team, cx, cy, r) {
   g.save(); g.translate(cx, cy);
-  g.fillStyle = team.helmet === '#FFFFFF' ? team.jersey : team.numberOutline;
-  g.strokeStyle = team.number; g.lineWidth = r * 0.12; g.lineJoin = 'round';
+  g.fillStyle = team.emblemFill || team.trim; g.strokeStyle = team.emblemStroke || team.number;
+  g.lineWidth = Math.max(1.5, r * 0.11); g.lineJoin = 'round'; g.lineCap = 'round';
+  const poly = (pts) => { pts.forEach(([x, y], i) => (i ? g.lineTo(x * r, y * r) : g.moveTo(x * r, y * r))); g.closePath(); };
+  const circ = (x, y, rr, ccw) => { g.moveTo((x + rr) * r, y * r); g.arc(x * r, y * r, rr * r, 0, Math.PI * 2, !!ccw); };
   g.beginPath();
-  switch (team.id) {
-    case 'embers':   // flama
+  switch (team.emblem) {
+    case 'flame':
       g.moveTo(0, -r); g.bezierCurveTo(r * 0.9, -r * 0.2, r * 0.75, r * 0.85, 0, r); g.bezierCurveTo(-r * 0.75, r * 0.85, -r * 0.9, -r * 0.1, -r * 0.25, -r * 0.45);
       g.bezierCurveTo(-r * 0.2, -r * 0.05, r * 0.05, -r * 0.1, 0, -r); break;
-    case 'onyx':     // gema facetada
-      g.moveTo(-r * 0.6, -r * 0.55); g.lineTo(r * 0.6, -r * 0.55); g.lineTo(r, -r * 0.1); g.lineTo(0, r); g.lineTo(-r, -r * 0.1); g.closePath();
+    case 'gem':
+      poly([[-0.6, -0.55], [0.6, -0.55], [1, -0.1], [0, 1], [-1, -0.1]]);
       g.moveTo(-r, -r * 0.1); g.lineTo(r, -r * 0.1); g.moveTo(-r * 0.25, -r * 0.55); g.lineTo(0, r); g.lineTo(r * 0.25, -r * 0.55); break;
-    case 'aurora':   // tres ondas de aurora
-      for (let i = 0; i < 3; i++) { const y = -r * 0.55 + i * r * 0.5; g.moveTo(-r, y + r * 0.25); g.quadraticCurveTo(0, y - r * 0.35, r, y + r * 0.25); g.lineTo(r, y + r * 0.42); g.quadraticCurveTo(0, y - r * 0.15, -r, y + r * 0.42); g.closePath(); } break;
-    case 'vortex':   // espiral
-      for (let i = 0; i <= 40; i++) { const a = i / 40 * Math.PI * 3.2, rr = r * (0.15 + i / 40 * 0.85); const x = Math.cos(a) * rr, y = Math.sin(a) * rr; if (i) g.lineTo(x, y); else g.moveTo(x, y); }
+    case 'spiral':
+      for (let i = 0; i <= 40; i++) { const a = i / 40 * Math.PI * 3.2, rr = r * (0.15 + i / 40 * 0.85); i ? g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr) : g.moveTo(Math.cos(a) * rr, Math.sin(a) * rr); }
       for (let i = 40; i >= 0; i--) { const a = i / 40 * Math.PI * 3.2, rr = r * (0.15 + i / 40 * 0.85) * 0.72; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } break;
-    case 'glaciers': // pico nevado
-      g.moveTo(-r, r * 0.65); g.lineTo(-r * 0.25, -r * 0.75); g.lineTo(0.05 * r, -r * 0.2); g.lineTo(r * 0.35, -r * 0.55); g.lineTo(r, r * 0.65); break;
-    case 'orbit':    // planeta con anillo
-      g.arc(0, 0, r * 0.55, 0, Math.PI * 2); g.moveTo(r * 1.0, 0); g.ellipse(0, 0, r * 1.0, r * 0.3, -0.35, 0, Math.PI * 2); break;
-    case 'hive':     // celdas hexagonales
-      for (const [dx, dy] of [[0, -0.52], [-0.45, 0.26], [0.45, 0.26]]) { for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; const x = dx * r + Math.cos(a) * r * 0.42, y = dy * r + Math.sin(a) * r * 0.42; if (i) g.lineTo(x, y); else g.moveTo(x, y); } g.closePath(); } break;
-    case 'flares':   // sol con destellos
-      for (let i = 0; i < 16; i++) { const a = i * Math.PI / 8, rr = i % 2 ? r * 0.55 : r; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } break;
-    default:         // pulso (línea de latido)
-      g.moveTo(-r, 0); g.lineTo(-r * 0.45, 0); g.lineTo(-r * 0.25, -r * 0.7); g.lineTo(0, r * 0.75); g.lineTo(r * 0.22, -r * 0.35); g.lineTo(r * 0.38, 0); g.lineTo(r, 0);
-      g.lineTo(r, r * 0.18); g.lineTo(-r, r * 0.18);
+    case 'snowflake':
+      for (let k = 0; k < 6; k++) { const a = k * Math.PI / 3, c = Math.cos(a), s = Math.sin(a), w = 0.13;
+        poly([[-s * w, c * w], [c - s * w, s + c * w], [c + s * w, s - c * w], [s * w, -c * w]]);
+        const m = 0.62; poly([[c * m, s * m], [c * m + Math.cos(a + 0.7) * 0.3, s * m + Math.sin(a + 0.7) * 0.3], [c * (m + 0.1), s * (m + 0.1)], [c * m + Math.cos(a - 0.7) * 0.3, s * m + Math.sin(a - 0.7) * 0.3]]); }
+      break;
+    case 'pulse':
+      poly([[-1, 0], [-0.45, 0], [-0.25, -0.7], [0, 0.75], [0.22, -0.35], [0.38, 0], [1, 0], [1, 0.18], [0.3, 0.18], [0.22, 0.05], [0, 1], [-0.27, -0.25], [-0.36, 0.18], [-1, 0.18]]); break;
+    case 'chevrons':
+      for (let k = 0; k < 3; k++) { const x = -0.85 + k * 0.6; poly([[x, -0.75], [x + 0.35, -0.75], [x + 0.8, 0], [x + 0.35, 0.75], [x, 0.75], [x + 0.45, 0]]); } break;
+    case 'crescent':
+      g.arc(0, 0, r, Math.PI * 0.25, Math.PI * 1.75, false); g.arc(r * 0.42, 0, r * 0.72, Math.PI * 1.62, Math.PI * 0.38, true); g.closePath();
+      circ(0.55, -0.2, 0.14); break;
+    case 'sunburst':
+      for (let i = 0; i < 24; i++) { const a = i * Math.PI / 12, rr = i % 2 ? 0.5 : 1; i ? g.lineTo(Math.cos(a) * rr * r, Math.sin(a) * rr * r) : g.moveTo(rr * r, 0); }
+      g.closePath(); circ(0, 0, 0.32, true); break;
+    case 'anvil':
+      poly([[-1, -0.55], [0.75, -0.55], [1, -0.35], [0.45, -0.1], [0.3, 0.35], [0.6, 0.55], [0.6, 0.75], [-0.6, 0.75], [-0.6, 0.55], [-0.3, 0.35], [-0.4, -0.15], [-1, -0.35]]); break;
+    case 'hex':
+      for (const [dx, dy] of [[0, -0.52], [-0.45, 0.26], [0.45, 0.26]]) { for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; const x = dx * r + Math.cos(a) * r * 0.42, y = dy * r + Math.sin(a) * r * 0.42; i ? g.lineTo(x, y) : g.moveTo(x, y); } g.closePath(); } break;
+    case 'comet':
+      circ(0.45, -0.35, 0.42);
+      poly([[0.1, -0.62], [-1, 0.35], [-0.2, -0.1], [-0.85, 0.85], [0.05, 0.05], [-0.45, 0.6], [0.6, 0.0]]); break;
+    case 'shield':
+      g.moveTo(-r * 0.8, -r * 0.85); g.lineTo(r * 0.8, -r * 0.85); g.lineTo(r * 0.8, -r * 0.05); g.quadraticCurveTo(r * 0.75, r * 0.65, 0, r); g.quadraticCurveTo(-r * 0.75, r * 0.65, -r * 0.8, -r * 0.05); g.closePath();
+      poly([[-0.1, -0.65], [0.1, -0.65], [0.1, 0.7], [-0.1, 0.7]]); break;
+    case 'horizon':
+      g.moveTo(-r * 0.62, r * 0.15); g.arc(0, r * 0.15, r * 0.62, Math.PI, 0); g.closePath();
+      for (let k = 0; k < 7; k++) { const a = Math.PI + (k + 0.5) * Math.PI / 7, c = Math.cos(a), s = Math.sin(a); poly([[c * 0.72 - s * 0.05, 0.15 + s * 0.72 + c * 0.05], [c * 1.0, 0.15 + s * 1.0], [c * 0.72 + s * 0.05, 0.15 + s * 0.72 - c * 0.05]]); }
+      poly([[-1, 0.3], [1, 0.3], [1, 0.45], [-1, 0.45]]); poly([[-0.7, 0.6], [0.7, 0.6], [0.7, 0.72], [-0.7, 0.72]]); break;
+    case 'trident':
+      poly([[-0.08, -0.35], [0.08, -0.35], [0.08, 1], [-0.08, 1]]);
+      poly([[-0.7, -0.35], [0.7, -0.35], [0.7, -0.2], [-0.7, -0.2]]);
+      for (const x of [-0.62, 0, 0.62]) poly([[x - 0.1, -0.3], [x, -1], [x + 0.1, -0.3]]); break;
+    case 'mountain':
+      poly([[-1, 0.7], [-0.35, -0.6], [-0.05, -0.05], [0.3, -0.8], [1, 0.7]]);
+      poly([[0.3, -0.8], [0.48, -0.42], [0.36, -0.48], [0.25, -0.35], [0.15, -0.5]]); break;
+    case 'eclipse':
+      circ(0, 0, 1); circ(0.28, -0.12, 0.72, true); circ(-0.55, 0.42, 0.12); break;
+    case 'wing':
+      g.moveTo(-r, r * 0.5); g.quadraticCurveTo(-r * 0.2, -r * 1.05, r, -r * 0.75);
+      g.lineTo(r * 0.55, -r * 0.35); g.lineTo(r * 0.85, -r * 0.3); g.lineTo(r * 0.35, r * 0.05); g.lineTo(r * 0.6, r * 0.1); g.lineTo(r * 0.1, r * 0.45); g.closePath(); break;
+    case 'crystal':
+      poly([[0, -1], [0.38, -0.25], [0.2, 0.9], [-0.2, 0.9], [-0.38, -0.25]]);
+      poly([[-0.75, -0.35], [-0.5, 0.1], [-0.6, 0.7], [-0.85, 0.2]]); poly([[0.75, -0.35], [0.85, 0.2], [0.6, 0.7], [0.5, 0.1]]); break;
+    case 'crown':
+      poly([[-0.95, 0.6], [-0.95, -0.55], [-0.5, -0.05], [0, -0.85], [0.5, -0.05], [0.95, -0.55], [0.95, 0.6]]);
+      poly([[-0.95, 0.72], [0.95, 0.72], [0.95, 0.9], [-0.95, 0.9]]); break;
+    case 'compass':
+      poly([[0, -1], [0.18, -0.18], [1, 0], [0.18, 0.18], [0, 1], [-0.18, 0.18], [-1, 0], [-0.18, -0.18]]);
+      circ(0, 0, 0.12, true); break;
+    case 'laurel':   // corona de laurel en U: dos ramas con hojas
+      g.lineWidth = Math.max(1, r * 0.05);
+      for (let k = 0; k < 6; k++) {
+        const th = (100 + k * 23) * Math.PI / 180, x = Math.cos(th) * 0.72, y = Math.sin(th) * 0.72, rot = th + Math.PI / 2 + 0.5;
+        for (const sx of [1, -1]) { g.beginPath(); g.ellipse(sx * x * r, y * r, r * 0.27, r * 0.12, sx > 0 ? rot : Math.PI - rot, 0, Math.PI * 2); g.fill(); g.stroke(); }
+      }
+      g.beginPath(); g.ellipse(0, r * 0.82, r * 0.14, r * 0.1, 0, 0, Math.PI * 2); break;
+    case 'anchor':
+      circ(0, -0.75, 0.2); circ(0, -0.75, 0.09, true);
+      poly([[-0.09, -0.55], [0.09, -0.55], [0.09, 0.8], [-0.09, 0.8]]); poly([[-0.5, -0.32], [0.5, -0.32], [0.5, -0.18], [-0.5, -0.18]]);
+      g.moveTo(-r * 0.9, r * 0.15); g.quadraticCurveTo(-r * 0.8, r * 0.95, 0, r * 0.95); g.quadraticCurveTo(r * 0.8, r * 0.95, r * 0.9, r * 0.15);
+      g.lineTo(r * 0.7, r * 0.3); g.quadraticCurveTo(r * 0.55, r * 0.75, 0, r * 0.78); g.quadraticCurveTo(-r * 0.55, r * 0.75, -r * 0.7, r * 0.3); g.closePath(); break;
+    case 'gear':
+      for (let i = 0; i < 40; i++) { const a = i / 40 * Math.PI * 2, tooth = (Math.floor(i / 2.5) % 2) ? 0.78 : 1; i ? g.lineTo(Math.cos(a) * r * tooth, Math.sin(a) * r * tooth) : g.moveTo(r * tooth, 0); }
+      g.closePath(); circ(0, 0, 0.36, true); break;
+    case 'pine':
+      poly([[0, -1], [0.45, -0.35], [0.22, -0.35], [0.7, 0.2], [0.35, 0.2], [0.85, 0.7], [-0.85, 0.7], [-0.35, 0.2], [-0.7, 0.2], [-0.22, -0.35], [-0.45, -0.35]]);
+      poly([[-0.12, 0.7], [0.12, 0.7], [0.12, 1], [-0.12, 1]]); break;
+    case 'planet':
+      circ(0, 0, 0.55); g.moveTo(r, 0); g.ellipse(0, 0, r, r * 0.3, -0.35, 0, Math.PI * 2); break;
+    case 'fang':
+      poly([[-0.85, -0.7], [-0.15, -0.7], [-0.35, 0.95]]); poly([[0.15, -0.7], [0.85, -0.7], [0.35, 0.95]]);
+      poly([[-1, -0.9], [1, -0.9], [1, -0.7], [-1, -0.7]]); break;
+    case 'claw':
+      for (const x of [-0.6, 0, 0.6]) { g.moveTo(r * (x - 0.15), -r * 0.9); g.quadraticCurveTo(r * (x - 0.35), 0, r * (x - 0.05), r * 0.95); g.quadraticCurveTo(r * (x + 0.1), 0, r * (x + 0.15), -r * 0.9); g.closePath(); } break;
+    case 'tornado':
+      for (let k = 0; k < 5; k++) { const y = -0.85 + k * 0.38, w = 0.95 - k * 0.17, x = Math.sin(k * 1.3) * 0.12; g.moveTo(r * (x - w), r * y); g.ellipse(r * x, r * y, r * w, r * 0.12, 0, Math.PI, 0, false); g.ellipse(r * x, r * (y + 0.04), r * w * 0.9, r * 0.08, 0, 0, Math.PI, false); g.closePath(); } break;
+    case 'shards':
+      poly([[-0.95, 0.8], [-0.45, -0.6], [-0.15, 0.8]]); poly([[-0.3, 0.8], [0.1, -1], [0.45, 0.8]]); poly([[0.3, 0.8], [0.7, -0.45], [0.98, 0.8]]); break;
+    case 'wave':
+      g.moveTo(-r, r * 0.8); g.bezierCurveTo(-r * 0.9, -r * 0.3, -r * 0.1, -r * 1.05, r * 0.6, -r * 0.65);
+      g.bezierCurveTo(r * 0.15, -r * 0.55, -r * 0.1, -r * 0.15, r * 0.25, r * 0.05); g.bezierCurveTo(r * 0.5, r * 0.2, r * 0.8, r * 0.1, r, -r * 0.05);
+      g.lineTo(r, r * 0.8); g.closePath(); break;
+    case 'radiant':
+      for (const rr of [1, 0.72, 0.44]) { g.moveTo(-rr * r, r * 0.6); g.arc(0, r * 0.6, rr * r, Math.PI, 0); g.lineTo((rr - 0.17) * r, r * 0.6); g.arc(0, r * 0.6, (rr - 0.17) * r, 0, Math.PI, true); g.closePath(); } break;
+    case 'stinger':  // cola de escorpión segmentada que termina en aguijón
+      { const seg = [[-0.55, 0.75, 0.24], [-0.72, 0.28, 0.22], [-0.62, -0.18, 0.2], [-0.32, -0.55, 0.18], [0.08, -0.72, 0.16], [0.42, -0.6, 0.14]];
+        for (const [x, y, rr] of seg) { g.beginPath(); g.arc(x * r, y * r, rr * r, 0, Math.PI * 2); g.fill(); g.stroke(); }
+        g.beginPath(); g.moveTo(r * 0.5, -r * 0.55); g.quadraticCurveTo(r * 0.95, -r * 0.4, r * 0.75, r * 0.05); g.quadraticCurveTo(r * 0.7, -r * 0.25, r * 0.38, -r * 0.42); g.closePath(); }
+      break;
+    default: circ(0, 0, 0.8);
   }
-  g.closePath(); g.fill(); g.stroke(); g.restore();
+  g.fill('evenodd'); g.stroke(); g.restore();
 }
 /* atlas 512×256 (4×2 celdas): 0-5 números, 6 emblema de casco */
 function kitAtlas(team, nums, backName) {
@@ -2257,7 +2411,7 @@ class StadiumView {
     const X0 = W;
     [y, h] = reg(REG.wall);
     g.fillStyle = '#0b0f1a'; g.fillRect(X0, y, W, h);
-    const spons = ['GRIDIRON+', 'BLITZ ENERGY', 'TURF KINGS', 'END ZONE'];
+    const spons = ['GRIDIRON+', 'BLITZ ENERGÍA', 'PASTO REY', 'ZONA FINAL'];
     spons.forEach((txt, i) => { g.fillStyle = i % 2 ? t.trim : t.jersey; g.fillRect(X0 + i * 256 + 6, y + 8, 244, h - 16); g.fillStyle = i % 2 ? '#111' : t.number; g.font = '900 30px "Arial Black", Impact, sans-serif'; g.fillText(txt, X0 + i * 256 + 128, y + h / 2, 230); });
     [y, h] = reg(REG.suites);
     g.fillStyle = '#05070c'; g.fillRect(X0 + 180, y + 6, 664, h - 12);
@@ -2388,7 +2542,7 @@ class StadiumView {
     const p = sim.player;
     g.fillStyle = '#ffcc1f'; g.font = '900 96px "Arial Black", Impact, sans-serif'; g.fillText(String(Math.max(0, Math.floor(p.z))), 256, 128);
     g.fillStyle = '#ffffff'; g.font = '700 26px "Arial Black", Impact, sans-serif';
-    g.fillText(`YDS   ·   ${(name || 'ROOKIE').toUpperCase()}   ·   LVL ${sim.difficulty.level}`, 256, 200, 490);
+    g.fillText(`YDS   ·   ${(name || 'JUGADOR 1').toUpperCase()}   ·   NIVEL ${sim.difficulty.level}`, 256, 200, 490);
     g.fillStyle = 'rgba(0,0,0,.25)'; for (let y = 0; y < 256; y += 3) g.fillRect(0, y, 512, 1);
     this.boardTex.needsUpdate = true;
   }
@@ -2593,13 +2747,13 @@ class GameView {
       g.visible = false; this.scene.add(g); return g;
     };
     this.powers = {
-      shield: mkPower(new THREE.IcosahedronGeometry(0.42, 1), '#55d6ff', 'SHIELD'),
-      magnet: mkPower(new THREE.TorusGeometry(0.34, 0.12, 12, 28, Math.PI * 1.3), '#ff4b5c', 'MAGNET'),
+      shield: mkPower(new THREE.IcosahedronGeometry(0.42, 1), '#55d6ff', 'ESCUDO'),
+      magnet: mkPower(new THREE.TorusGeometry(0.34, 0.12, 12, 28, Math.PI * 1.3), '#ff4b5c', 'IMÁN'),
       double: mkPower(new THREE.OctahedronGeometry(0.46, 0), '#ffcc1f', '2X')
     };
     this.bestLine = new THREE.Mesh(new THREE.PlaneGeometry(24, 0.5).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.0, 0.1), transparent: true, opacity: 0.8, depthWrite: false }));
     this.bestLine.position.y = 0.04; this.bestLine.visible = false; this.scene.add(this.bestLine);
-    this.bestLabel = new THREE.Sprite(new THREE.SpriteMaterial({ map: labelTexture('BEST', '#ffcc1f'), transparent: true, depthWrite: false }));
+    this.bestLabel = new THREE.Sprite(new THREE.SpriteMaterial({ map: labelTexture('RÉCORD', '#ffcc1f'), transparent: true, depthWrite: false }));
     this.bestLabel.scale.set(3, 1.1, 1); this.bestLabel.visible = false; this.scene.add(this.bestLabel);
 
     this.fxAdd = new Particles(this.scene, 500, true, 0.3, this.tex.dot);
@@ -2678,7 +2832,7 @@ class GameView {
     const bt = PLAYER_BODY[char.id] || 'BALANCED';
     CharacterFactory.dress(this.player, CharacterFactory.pieces(bt, team, SKINS_P[char.id] || '#8d5a3b'), this.decalFor(bt, 0, 1));
     const setMap = (mat, tex) => { if (mat.map) mat.map.dispose(); mat.map = tex; mat.needsUpdate = true; };
-    setMap(this.decalP, kitAtlas(team, [char.number, char.number], name || 'PLAYER 1'));
+    setMap(this.decalP, kitAtlas(team, [char.number, char.number], name || 'JUGADOR 1'));
     setMap(this.decalD, kitAtlas(rival, DEF_NUMS));
     if (this.stadium.team !== team) this.stadium.setTeam(team);
     for (const d of this.defs) d.serial = -1;
@@ -2948,9 +3102,9 @@ const UI = {
   hint(text) { const h = $('hint'); if (!text) { h.classList.add('hidden'); return; } h.textContent = text; h.classList.remove('hidden'); },
   flash() { const f = $('fx'); f.classList.remove('flash'); void f.offsetWidth; f.classList.add('flash'); }
 };
-const RANKS = [[0, 'ROOKIE'], [150, 'STARTER'], [350, 'PRO BOWL'], [650, 'ALL-PRO'], [1000, 'MVP'], [1500, 'HALL OF FAME'], [2500, 'LEGEND']];
-const COMBO_TIERS = { 3: 'GREAT!', 5: 'AMAZING!', 7: 'UNSTOPPABLE!', 10: 'LEGENDARY!' };
-const LEVEL_NEWS = { 2: 'SAFETIES IN: THEY CHASE SLOW RUNNERS', 3: 'LINEMEN + PINCER RUSH', 4: 'WALLS WITH A GAP', 5: 'BLITZ + DOUBLE CUTTERS', 6: 'GOAL LINE STAND' };
+const RANKS = [[0, 'NOVATO'], [150, 'TITULAR'], [350, 'PRO BOWL'], [650, 'ALL-PRO'], [1000, 'MVP'], [1500, 'SALÓN DE LA FAMA'], [2500, 'LEYENDA']];
+const COMBO_TIERS = { 3: '¡GENIAL!', 5: '¡INCREÍBLE!', 7: '¡IMPARABLE!', 10: '¡LEGENDARIO!' };
+const LEVEL_NEWS = { 2: 'LLEGAN LOS SAFETIES: PERSIGUEN AL QUE VA LENTO', 3: 'LINIEROS Y PINZAS', 4: 'MUROS CON UN HUECO', 5: 'BLITZ Y DOBLE FINTADOR', 6: 'DEFENSA DE GOAL LINE' };
 
 /* ---------- Game ---------- */
 const Game = {
@@ -2966,8 +3120,9 @@ const Game = {
     const prefs = Store.get('blitzrun.prefs', {});
     this.charIdx = clamp(prefs.charIdx != null ? prefs.charIdx : 1, 0, CHARACTERS.length - 1);
     this.teamIdx = clamp(prefs.teamIdx != null ? prefs.teamIdx : 0, 0, TEAMS.length - 1);
-    if (!Store.get('blitzrun.nameMig', false)) { if (prefs.name === 'JOSE' || prefs.name === 'ROOKIE') prefs.name = null; Store.set('blitzrun.nameMig', true); }
-    this.name = prefs.name || 'PLAYER 1';
+    if (!Store.get('blitzrun.nameMig', false)) { if (prefs.name === 'JOSE' || prefs.name === 'ROOKIE') prefs.name = null;
+    if (prefs.name === 'PLAYER 1') prefs.name = null; Store.set('blitzrun.nameMig', true); }
+    this.name = prefs.name || 'JUGADOR 1';
     this.best = Store.get('blitzrun.best', 0) || 0;
     this.runs = Store.get('blitzrun.runs', 0) || 0;
     this.preview();
@@ -3002,8 +3157,8 @@ const Game = {
     $('nameInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); this.startFromName(); } });
     this.input.onKey = (e) => this.onKey(e);
     const gfxOrder = ['auto', 'high', 'medium', 'low'];
-    const GFX_EN = { high: 'HIGH', medium: 'MEDIUM', low: 'LOW' };
-    const gfxLabel = () => { document.querySelectorAll('.gfxBtn').forEach((b) => { b.textContent = 'GRAPHICS: ' + (this.gfxPref === 'auto' ? `AUTO (${GFX_EN[this.view.qualityKey]})` : GFX_EN[this.gfxPref]); }); };
+    const GFX_EN = { high: 'ALTA', medium: 'MEDIA', low: 'BAJA' };
+    const gfxLabel = () => { document.querySelectorAll('.gfxBtn').forEach((b) => { b.textContent = 'GRÁFICOS: ' + (this.gfxPref === 'auto' ? `AUTO (${GFX_EN[this.view.qualityKey]})` : GFX_EN[this.gfxPref]); }); };
     gfxLabel();
     document.querySelectorAll('.gfxBtn').forEach((gb) => gb.addEventListener('click', () => {
       Sound.click(); this.gfxPref = gfxOrder[(gfxOrder.indexOf(this.gfxPref) + 1) % gfxOrder.length]; Store.set('blitzrun.gfx', this.gfxPref);
@@ -3014,8 +3169,8 @@ const Game = {
     const unlock = () => Sound.ensure();
     window.addEventListener('pointerdown', unlock, { passive: true }); window.addEventListener('keydown', unlock);
     this.view.onStep = () => { if (this.state === 'playing' && this.sim.state === 'running') Sound.step(); };
-    const sndLabels = { music: 'MUSIC', sfx: 'SOUND FX', voice: 'ANNOUNCER' };
-    const syncSnd = () => document.querySelectorAll('[data-snd]').forEach((b) => { const k = b.dataset.snd, on = Sound.prefs[k]; b.classList.toggle('off', !on); b.textContent = `${sndLabels[k]}: ${on ? 'ON' : 'OFF'}`; });
+    const sndLabels = { music: 'MÚSICA', sfx: 'EFECTOS', voice: 'NARRADOR' };
+    const syncSnd = () => document.querySelectorAll('[data-snd]').forEach((b) => { const k = b.dataset.snd, on = Sound.prefs[k]; b.classList.toggle('off', !on); b.textContent = `${sndLabels[k]}: ${on ? 'SÍ' : 'NO'}`; });
     syncSnd();
     document.querySelectorAll('[data-snd]').forEach((b) => b.addEventListener('click', () => { Sound.ensure(); Sound.toggle(b.dataset.snd); syncSnd(); Sound.click(); }));
     // menú: paneles de información y accesos rápidos
@@ -3035,7 +3190,7 @@ const Game = {
     b.innerHTML = m
       ? '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>'
       : '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
-    b.classList.toggle('muted', m); b.setAttribute('aria-label', m ? 'Sound off — tap to turn on' : 'Sound on — tap to mute'); b.title = m ? 'Sound: OFF' : 'Sound: ON';
+    b.classList.toggle('muted', m); b.setAttribute('aria-label', m ? 'Sonido apagado: toca para activarlo' : 'Sonido activo: toca para silenciar'); b.title = m ? 'Sonido: apagado' : 'Sonido: activo';
   },
   setState(s) { this.state = s; document.body.classList.toggle('ingame', s === 'countdown' || s === 'playing'); },
   preview() { const team = TEAMS[this.teamIdx]; this.view.setup(CHARACTERS[this.charIdx], team, TEAMS[team.rival], this.name); },
@@ -3067,14 +3222,14 @@ const Game = {
   toTeam() { this.setState('team'); this.buildTeamCards(); UI.show('sTeam'); this.savePrefs(); },
   toName(from) {
     this.nameFrom = from || 'flow';
-    $('btnStart').textContent = this.nameFrom === 'menu' ? 'SAVE' : 'KICKOFF';
+    $('btnStart').textContent = this.nameFrom === 'menu' ? 'GUARDAR' : '¡A JUGAR!';
     this.setState('name'); UI.show('sName'); this.savePrefs();
-    const inp = $('nameInput'); inp.placeholder = 'PLAYER 1'; inp.value = this.name === 'PLAYER 1' ? '' : this.name;
+    const inp = $('nameInput'); inp.placeholder = 'JUGADOR 1'; inp.value = this.name === 'JUGADOR 1' ? '' : this.name;
     if (!document.body.classList.contains('touch')) setTimeout(() => { inp.focus(); inp.select(); }, 30);
   },
   startFromName() {
     const v = $('nameInput').value.replace(/[^\p{L}\p{N} .\-]/gu, '').trim().toUpperCase().slice(0, 12);
-    this.name = v || 'PLAYER 1'; this.savePrefs(); $('nameInput').blur();
+    this.name = v || 'JUGADOR 1'; this.savePrefs(); $('nameInput').blur();
     if (this.nameFrom === 'menu') { this.preview(); this.toMenu(); } else this.beginCountdown();
   },
   buildCharCards() {
@@ -3090,33 +3245,43 @@ const Game = {
     });
   },
   teamImage(t) {
+    const key = t.id + '|' + this.charIdx;
     if (!this.teamImgs) this.teamImgs = {};
-    if (this.teamImgs[t.id]) return this.teamImgs[t.id];
-    const c = document.createElement('canvas'); c.width = 480; c.height = 200; const g = c.getContext('2d');
-    const gr = g.createLinearGradient(0, 0, 480, 200); gr.addColorStop(0, t.jersey); gr.addColorStop(1, shade(t.jersey, 0.72));
-    g.fillStyle = gr; g.fillRect(0, 0, 480, 200);
-    g.fillStyle = t.trim; g.fillRect(0, 0, 480, 10); g.fillRect(0, 190, 480, 10);
-    g.fillStyle = t.helmet; g.fillRect(0, 10, 480, 4); g.fillRect(0, 186, 480, 4);
-    g.globalAlpha = 0.16; drawEmblem(g, t, 360, 100, 120); g.globalAlpha = 1;
-    drawEmblem(g, t, 110, 100, 58);
+    if (this.teamImgs[key]) return this.teamImgs[key];
+    const c = document.createElement('canvas'); c.width = 300; c.height = 130; const g = c.getContext('2d');
+    const gr = g.createLinearGradient(0, 0, 300, 130); gr.addColorStop(0, t.jersey); gr.addColorStop(1, shade(t.jersey, 0.7));
+    g.fillStyle = gr; g.fillRect(0, 0, 300, 130);
+    g.fillStyle = t.trim; g.fillRect(0, 0, 300, 8); g.fillRect(0, 122, 300, 8);
+    g.fillStyle = t.helmet; g.fillRect(0, 8, 300, 3); g.fillRect(0, 119, 300, 3);
+    g.globalAlpha = 0.14; drawEmblem(g, t, 225, 65, 80); g.globalAlpha = 1;
+    drawEmblem(g, t, 75, 65, 42);
     g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
-    g.font = '900 120px "Arial Black", Impact, sans-serif';
-    g.lineWidth = 14; g.strokeStyle = t.numberOutline; g.strokeText(String(CHARACTERS[this.charIdx].number), 330, 106);
-    g.fillStyle = t.number; g.fillText(String(CHARACTERS[this.charIdx].number), 330, 106);
-    return (this.teamImgs[t.id] = c.toDataURL());
+    g.font = '900 72px "Arial Black", Impact, sans-serif';
+    g.lineWidth = 10; g.strokeStyle = t.numberOutline; g.strokeText(String(CHARACTERS[this.charIdx].number), 205, 70);
+    g.fillStyle = t.number; g.fillText(String(CHARACTERS[this.charIdx].number), 205, 70);
+    return (this.teamImgs[key] = c.toDataURL());
   },
   buildTeamCards() {
-    this.teamImgs = {};
     const wrap = $('teamCards'); wrap.innerHTML = '';
     TEAMS.forEach((t, i) => {
-      const r = TEAMS[t.rival], b = document.createElement('button');
-      b.className = 'card' + (i === this.teamIdx ? ' sel' : ''); b.setAttribute('aria-pressed', i === this.teamIdx);
-      b.innerHTML = `<div class="role">${t.city.toUpperCase()}</div><div class="cname">${t.name}</div><img class="team-img" alt="" src="${this.teamImage(t)}"><div class="vs">VS ${r.name}</div>`;
-      b.addEventListener('click', () => { Sound.ensure(); Sound.click(); this.teamIdx = i; this.buildTeamCards(); this.preview(); });
+      const b = document.createElement('button');
+      b.className = 'card tcard' + (i === this.teamIdx ? ' sel' : ''); b.setAttribute('aria-pressed', i === this.teamIdx);
+      b.innerHTML = `<img class="team-img" alt="" src="${this.teamImage(t)}"><div class="cname">${t.name}</div><div class="role">${t.city.toUpperCase()}</div>`;
+      b.addEventListener('click', () => { Sound.ensure(); Sound.click(); this.selectTeam(i); });
       b.addEventListener('dblclick', () => this.toName());
       wrap.appendChild(b);
     });
+    this.updateTeamInfo();
+    const sel = wrap.children[this.teamIdx]; if (sel) setTimeout(() => { wrap.scrollTop = sel.offsetTop - wrap.clientHeight / 2 + sel.offsetHeight / 2; }, 30);
   },
+  selectTeam(i) {
+    this.teamIdx = (i + TEAMS.length) % TEAMS.length;
+    [...$('teamCards').children].forEach((c, k) => { c.classList.toggle('sel', k === this.teamIdx); c.setAttribute('aria-pressed', k === this.teamIdx); });
+    const wrap = $('teamCards'), sel = wrap.children[this.teamIdx];
+    if (sel) { const top = sel.offsetTop; if (top < wrap.scrollTop) wrap.scrollTop = top - 6; else if (top + sel.offsetHeight > wrap.scrollTop + wrap.clientHeight) wrap.scrollTop = top + sel.offsetHeight - wrap.clientHeight + 6; }
+    this.updateTeamInfo(); this.preview();
+  },
+  updateTeamInfo() { const t = TEAMS[this.teamIdx]; $('teamPick').innerHTML = `<b>${t.name}</b> · ${t.city.toUpperCase()} <span>VS ${TEAMS[t.rival].name}</span>`; },
   beginCountdown() {
     this.sim.reset(CHARACTERS[this.charIdx]);
     this.preview(); this.view.snap(this.sim.player); this.view.setBest(this.best);
@@ -3125,21 +3290,21 @@ const Game = {
     this.input.releaseAll(); this.input.clear();
     this.setState('countdown');
     const touch = document.body.classList.contains('touch');
-    this.hints = this.runs < 3 ? [
-      [0, touch ? 'HOLD ◀ ▶ TO MOVE · JUMP TO HURDLE' : 'A / D TO MOVE · SPACE TO HURDLE'],
-      [6, touch ? 'SPIN THROUGH A TACKLER' : 'SHIFT: SPIN THROUGH A TACKLER'],
-      [12, touch ? '▲ SPRINT BURNS STAMINA' : 'W: SPRINT (BURNS STAMINA)'],
-      [18, touch ? 'DOUBLE-TAP ◀ OR ▶ TO JUKE' : 'DOUBLE-TAP A OR D TO JUKE'],
-      [24, 'RED RING = DIVING TACKLE. JUKE OR HURDLE'],
-      [30, null]] : [[0, touch ? '◀ ▶ MOVE · JUMP · SPIN' : 'A/D MOVE · SPACE HURDLE · SHIFT SPIN'], [5, null]];
+    this.hints = touch ? [[0, null]] : this.runs < 3 ? [
+      [0, touch ? 'MANTÉN ◀ ▶ PARA MOVERTE · SALTAR PARA BRINCAR' : 'A / D PARA MOVERTE · ESPACIO PARA SALTAR'],
+      [6, touch ? 'GIRO: ATRAVIESA A UN DEFENSOR' : 'SHIFT: GIRO PARA ATRAVESAR A UN DEFENSOR'],
+      [12, touch ? '▲ ACELERAR GASTA RESISTENCIA' : 'W: ACELERAR (GASTA RESISTENCIA)'],
+      [18, touch ? 'TOCA DOS VECES ◀ O ▶ PARA HACER JUKE' : 'TOCA DOS VECES A O D PARA HACER JUKE'],
+      [24, 'ANILLO ROJO = SE VA A LANZAR. HAZ JUKE O SALTA'],
+      [30, null]] : [[0, touch ? '◀ ▶ MOVERTE · SALTAR · GIRO' : 'A/D MOVERTE · ESPACIO SALTAR · SHIFT GIRO'], [5, null]];
     this.hintIdx = 0; UI.hint(this.runs < 3 ? null : this.hints[0][1]); this.applyLiveCtl();
     const cc = $('ctlCard'); cc.querySelectorAll('[data-kb]').forEach((k) => { k.textContent = touch ? k.dataset.tc : k.dataset.kb; });
-    clearTimeout(this.ctlT); const showCc = this.runs < 3 && !this.liveCtlOn(); cc.classList.toggle('show', showCc); if (showCc) this.ctlT = setTimeout(() => cc.classList.remove('show'), 6500);
+    clearTimeout(this.ctlT); const showCc = !touch && this.runs < 3 && !this.liveCtlOn(); cc.classList.toggle('show', showCc); if (showCc) this.ctlT = setTimeout(() => cc.classList.remove('show'), 6500);
     Sound.ensure(); Sound.setMode('game'); Sound.setIntensity(1, false); Sound.crowd(0.06); Sound.cheer(0.2, 2);
     this.updateHud(true);
   },
   endEffects() { $('fxFire').classList.remove('on'); },
-  liveCtlOn() { return this.ctlPref === 'on' || (this.ctlPref === 'auto' && this.runs < 5); },
+  liveCtlOn() { if (document.body.classList.contains('touch')) return false; return this.ctlPref === 'on' || (this.ctlPref === 'auto' && this.runs < 5); },
   applyLiveCtl() { const on = this.liveCtlOn(); document.body.classList.toggle('ctl-on', on); $('ctlBtn').classList.toggle('on', on); },
   hideCtl() { clearTimeout(this.ctlT); $('ctlCard').classList.remove('show'); },
   pause() {
@@ -3161,8 +3326,8 @@ const Game = {
     $('oNew').classList.toggle('hidden', !isBest);
     let ri = 0; for (let i = 0; i < RANKS.length; i++) if (yards >= RANKS[i][0]) ri = i;
     const next = RANKS[ri + 1];
-    $('oRank').innerHTML = `${RANKS[ri][1]}<span>${next ? `NEXT: ${next[1]} AT ${next[0]} YDS · ${next[0] - yards} TO GO` : 'MAX RANK'}</span>`;
-    const tk = s.tackler; $('oBy').textContent = tk ? `TACKLED BY #${[52, 99, 31, 7, 24, 90][tk.index % 6]} · ${{ NORMAL: 'LINEBACKER', SPEED: 'SAFETY', HEAVY: 'LINEMAN', CUTTER: 'CUTTER' }[tk.type]}${tk.fromBehind ? ' · FROM BEHIND' : ''}` : '';
+    $('oRank').innerHTML = `${RANKS[ri][1]}<span>${next ? `SIGUIENTE: ${next[1]} A ${next[0]} YDS · TE FALTAN ${next[0] - yards}` : 'RANGO MÁXIMO'}</span>`;
+    const tk = s.tackler; $('oBy').textContent = tk ? `TE TACLEÓ EL #${[52, 99, 31, 7, 24, 90][tk.index % 6]} · ${{ NORMAL: 'LINEBACKER', SPEED: 'SAFETY', HEAVY: 'LINIERO', CUTTER: 'FINTADOR' }[tk.type]}${tk.fromBehind ? ' · POR LA ESPALDA' : ''}` : '';
     Sound.setMode(null); Sound.crowd(0.02); Sound.sting();
     clearTimeout(this.menuMusicT); this.menuMusicT = setTimeout(() => { if (this.state === 'gameover') Sound.setMode('menu'); }, 2600);
     this.hideCtl(); this.setState('gameover'); this.overTime = performance.now();
@@ -3180,8 +3345,11 @@ const Game = {
       else if (c === 'ArrowRight' || c === 'KeyD') { this.charIdx = (this.charIdx + 1) % CHARACTERS.length; this.buildCharCards(); this.preview(); Sound.click(); }
       else if (enter) { e.preventDefault(); this.toTeam(); } else if (c === 'Escape') this.toMenu();
     } else if (this.state === 'team') {
-      if (c === 'ArrowLeft' || c === 'KeyA') { this.teamIdx = (this.teamIdx + TEAMS.length - 1) % TEAMS.length; this.buildTeamCards(); this.preview(); Sound.click(); }
-      else if (c === 'ArrowRight' || c === 'KeyD') { this.teamIdx = (this.teamIdx + 1) % TEAMS.length; this.buildTeamCards(); this.preview(); Sound.click(); }
+      const cols = Math.max(1, Math.round($('teamCards').clientWidth / (($('teamCards').children[0] || {}).offsetWidth || 160)));
+      if (c === 'ArrowLeft' || c === 'KeyA') { this.selectTeam(this.teamIdx - 1); Sound.click(); }
+      else if (c === 'ArrowRight' || c === 'KeyD') { this.selectTeam(this.teamIdx + 1); Sound.click(); }
+      else if (c === 'ArrowUp' || c === 'KeyW') { e.preventDefault(); this.selectTeam(this.teamIdx - cols); Sound.click(); }
+      else if (c === 'ArrowDown' || c === 'KeyS') { e.preventDefault(); this.selectTeam(this.teamIdx + cols); Sound.click(); }
       else if (enter) { e.preventDefault(); this.toName(); } else if (c === 'Escape') this.toSelect();
     } else if (this.state === 'playing' && (c === 'Escape' || c === 'KeyP')) this.pause();
     else if (this.state === 'paused' && !this.pausedInfo && (c === 'Escape' || c === 'KeyP')) this.resume();
@@ -3215,7 +3383,7 @@ const Game = {
     if (!next) return;
     if (order.indexOf(next) < i) pf.downgraded = true;
     this.view.setQuality(next); this.gfxLabel();
-    if (this.state === 'playing') { UI.hint('GRAPHICS: ' + ({ high: 'HIGH', medium: 'MEDIUM', low: 'LOW' })[next]); this.newsTimer = 1.8; }
+    if (this.state === 'playing') { UI.hint('GRÁFICOS: ' + ({ high: 'ALTA', medium: 'MEDIA', low: 'BAJA' })[next]); this.newsTimer = 1.8; }
   },
   handleEvent(e) {
     const p = this.sim.player, v = this.view;
@@ -3224,46 +3392,46 @@ const Game = {
       case 'land': Sound.land(); v.emitTurf(-p.x, p.z, 8, { speed: 3, vz: p.speed * 0.6 }); break;
       case 'cut': Sound.cut(); v.emitTurf(-p.x, p.z, 7, { speed: 3.5, vx: p.vx * 0.3, vz: p.speed * 0.6 }); break;
       case 'spinStart': Sound.spin(); v.emitBurst(-p.x, 1.1, p.z, ['#55d6ff', '#ffffff'], 14, { speed: 3, up: 1, life: 0.3, grav: 0, vz: p.speed * 0.8 }); v.emitTurf(-p.x, p.z, 8, { vz: p.speed * 0.6 }); break;
-      case 'nearMiss': Sound.near(this.sim.score.combo, clamp((e.d.x - p.x) / 3, -1, 1)); this.award(e, 'NEAR MISS', '', ['#ffffff']); v.pulse(0.5); break;
-      case 'closeCall': Sound.near(this.sim.score.combo + 3, clamp((e.d.x - p.x) / 3, -1, 1)); Sound.ooh(0.6); v.pulse(1); this.award(e, 'CLOSE CALL', 'white', ['#ffcc1f', '#ffffff']); this.slowmo = Math.max(this.slowmo, 0.12); break;
-      case 'hurdle': Sound.big(); this.award(e, 'HURDLE', 'white', ['#ffffff', '#ffcc1f']); Sound.cheer(0.35); break;
-      case 'evade': Sound.near(this.sim.score.combo + 2, clamp((e.d.x - p.x) / 3, -1, 1)); Sound.cheer(0.3); this.award(e, 'MISSED TACKLE', 'white', ['#ffffff', '#ff3030']); this.slowmo = Math.max(this.slowmo, 0.1); break;
+      case 'nearMiss': Sound.near(this.sim.score.combo, clamp((e.d.x - p.x) / 3, -1, 1)); this.award(e, '¡CASI!', '', ['#ffffff']); v.pulse(0.5); break;
+      case 'closeCall': Sound.near(this.sim.score.combo + 3, clamp((e.d.x - p.x) / 3, -1, 1)); Sound.ooh(0.6); v.pulse(1); this.award(e, '¡POR UN PELO!', 'white', ['#ffcc1f', '#ffffff']); this.slowmo = Math.max(this.slowmo, 0.12); break;
+      case 'hurdle': Sound.big(); this.award(e, '¡SALTO!', 'white', ['#ffffff', '#ffcc1f']); Sound.cheer(0.35); break;
+      case 'evade': Sound.near(this.sim.score.combo + 2, clamp((e.d.x - p.x) / 3, -1, 1)); Sound.cheer(0.3); this.award(e, '¡TACKLE FALLIDO!', 'white', ['#ffffff', '#ff3030']); this.slowmo = Math.max(this.slowmo, 0.1); break;
       case 'dive': Sound.dive(clamp((e.d.x - p.x) / 3, -1, 1)); break;
-      case 'shrug': Sound.broke(); Sound.cheer(0.3); v.shake = 0.2; this.award(e, 'SHRUGGED OFF', 'ice', ['#55d6ff', '#ffffff']); break;
-      case 'stagger': Sound.stagger(); v.shake = 0.25; UI.popup('STUMBLE!', 'white'); this.lastTier = 0; v.emitTurf(-p.x, p.z, 14, { speed: 3, vz: p.speed * 0.5 }); break;
-      case 'chase': Sound.whoosh(0); UI.hint(document.body.classList.contains('touch') ? 'SAFETY ON YOUR TAIL · HOLD ▲' : 'SAFETY ON YOUR TAIL · HOLD W'); this.newsTimer = 1.6; break;
-      case 'outran': Sound.cheer(0.3); this.award(e, 'OUTRAN', 'white', null); break;
-      case 'winded': Sound.winded(); UI.hint('OUT OF GAS · RELEASE SPRINT'); this.newsTimer = 2; break;
-      case 'spin': Sound.big(); this.award(e, 'SPIN MOVE', 'ice', ['#55d6ff', '#ffffff']); this.slowmo = Math.max(this.slowmo, 0.1); Sound.cheer(0.35); break;
-      case 'broke': UI.popup('BROKE TACKLE!', 'ice'); Sound.broke(); v.shake = 0.3; this.slowmo = 0.18; this.award(e, '', 'ice', ['#55d6ff', '#ffffff']); Sound.cheer(0.4); break;
-      case 'truck': Sound.truck(); Sound.cheer(0.3); v.shake = 0.22; this.award(e, 'TRUCKED', 'fire', ['#ff7a1a', '#ffcc1f', '#ffffff']); v.emitTurf(-e.d.x, e.d.z, 12, { speed: 4 }); break;
-      case 'shieldHit': Sound.shieldBreak(); v.shake = 0.25; UI.popup('SHIELD!', 'ice'); this.award(e, 'BLOCKED', 'ice', ['#55d6ff']); v.shieldBreak(-p.x, p.z); break;
+      case 'shrug': Sound.broke(); Sound.cheer(0.3); v.shake = 0.2; this.award(e, '¡SE LO QUITÓ!', 'ice', ['#55d6ff', '#ffffff']); break;
+      case 'stagger': Sound.stagger(); v.shake = 0.25; UI.popup('¡TROPIEZO!', 'white'); this.lastTier = 0; v.emitTurf(-p.x, p.z, 14, { speed: 3, vz: p.speed * 0.5 }); break;
+      case 'chase': Sound.whoosh(0); UI.hint(document.body.classList.contains('touch') ? '¡EL SAFETY TE PERSIGUE! · MANTÉN ▲' : '¡EL SAFETY TE PERSIGUE! · MANTÉN W'); this.newsTimer = 1.6; break;
+      case 'outran': Sound.cheer(0.3); this.award(e, '¡LO DEJASTE ATRÁS!', 'white', null); break;
+      case 'winded': Sound.winded(); UI.hint('SIN AIRE · SUELTA ACELERAR'); this.newsTimer = 2; break;
+      case 'spin': Sound.big(); this.award(e, '¡GIRO!', 'ice', ['#55d6ff', '#ffffff']); this.slowmo = Math.max(this.slowmo, 0.1); Sound.cheer(0.35); break;
+      case 'broke': UI.popup('¡ROMPIÓ EL TACKLE!', 'ice'); Sound.broke(); v.shake = 0.3; this.slowmo = 0.18; this.award(e, '', 'ice', ['#55d6ff', '#ffffff']); Sound.cheer(0.4); break;
+      case 'truck': Sound.truck(); Sound.cheer(0.3); v.shake = 0.22; this.award(e, '¡ATROPELLADO!', 'fire', ['#ff7a1a', '#ffcc1f', '#ffffff']); v.emitTurf(-e.d.x, e.d.z, 12, { speed: 4 }); break;
+      case 'shieldHit': Sound.shieldBreak(); v.shake = 0.25; UI.popup('¡ESCUDO!', 'ice'); this.award(e, '¡BLOQUEADO!', 'ice', ['#55d6ff']); v.shieldBreak(-p.x, p.z); break;
       case 'juke': Sound.juke(e.dir); v.jukeFx(-p.x, p.z, e.dir, p.speed); break;
-      case 'ankle': Sound.big(); Sound.cheer(0.45, 1.6); this.award(e, 'ANKLE BREAKER', 'white', ['#ffffff', '#ffcc1f']); this.slowmo = Math.max(this.slowmo, 0.14); v.pulse(); Sound.ankleSting(); break;
+      case 'ankle': Sound.big(); Sound.cheer(0.45, 1.6); this.award(e, '¡ROMPETOBILLOS!', 'white', ['#ffffff', '#ffcc1f']); this.slowmo = Math.max(this.slowmo, 0.14); v.pulse(); Sound.ankleSting(); break;
       case 'coin':
         this.coinChain = (this.coinChain || 0) + 1; Sound.coin(this.coinChain);
         this.flyCoin(-e.x, e.y, e.z);
         v.emitBurst(-e.x, e.y, e.z, ['#fff3b0', '#ffcc1f', '#ffffff'], 10, { speed: 2.4, up: 2, life: 0.35, grav: -3, vz: p.speed * 0.8 });
         break;
       case 'power':
-        Sound.power(); UI.popup(e.kind === 'shield' ? 'SHIELD' : e.kind === 'magnet' ? 'MAGNET' : '2X SCORE', e.kind === 'shield' ? 'ice' : '');
+        Sound.power(); UI.popup(e.kind === 'shield' ? 'ESCUDO' : e.kind === 'magnet' ? 'IMÁN' : 'PUNTOS 2X', e.kind === 'shield' ? 'ice' : '');
         v.emitBurst(-e.x, e.y, e.z, e.kind === 'shield' ? ['#55d6ff', '#ffffff'] : e.kind === 'magnet' ? ['#ff4b5c', '#ffffff'] : ['#ffcc1f', '#ffffff'], 30, { speed: 5, up: 3, life: 0.6, grav: -4, vz: p.speed * 0.7 });
         v.shockwave(-p.x, p.z, e.kind === 'shield' ? '#55d6ff' : e.kind === 'magnet' ? '#ff4b5c' : '#ffcc1f');
         break;
       case 'fire':
-        UI.popup('ON FIRE!', 'fire'); v.stadium.flashRibbon('ON FIRE', 4); Sound.fireSting(); Sound.cheer(0.5, 2.5); $('fxFire').classList.add('on'); v.shake = 0.25;
+        UI.popup('¡EN LLAMAS!', 'fire'); v.stadium.flashRibbon('¡EN LLAMAS!', 4); Sound.fireSting(); Sound.cheer(0.5, 2.5); $('fxFire').classList.add('on'); v.shake = 0.25;
         v.emitBurst(-p.x, 1.2, p.z, ['#ff5a00', '#ffb000', '#ffe27a'], 60, { speed: 7, up: 4, life: 0.6, grav: -3, vz: p.speed * 0.8 });
         break;
       case 'fireEnd': $('fxFire').classList.remove('on'); break;
-      case 'charge': Sound.charge(); Floaters.spawn('+1 BREAK', -p.x, 2.8, p.z + 1.5, 'ice'); break;
-      case 'level': UI.popup(`LEVEL ${e.level}`, 'white'); Sound.level(); if (LEVEL_NEWS[e.level]) { UI.hint(LEVEL_NEWS[e.level]); this.newsTimer = 2.8; } break;
+      case 'charge': Sound.charge(); Floaters.spawn('+1 ROMPE', -p.x, 2.8, p.z + 1.5, 'ice'); break;
+      case 'level': UI.popup(`NIVEL ${e.level}`, 'white'); Sound.level(); if (LEVEL_NEWS[e.level]) { UI.hint(LEVEL_NEWS[e.level]); this.newsTimer = 2.8; } break;
       case 'touchdown':
-        UI.big('TOUCHDOWN!', 'td long'); UI.flash(); v.stadium.flashRibbon('TOUCHDOWN!', 3.5); Sound.tdSting(); Sound.cheer(0.6, 3);
+        UI.big('¡TOUCHDOWN!', 'td long'); UI.flash(); v.stadium.flashRibbon('¡TOUCHDOWN!', 3.5); Sound.tdSting(); Sound.cheer(0.6, 3);
         v.confetti(-p.x, p.z); v.fireworks(p.z, [this.sim && TEAMS[this.teamIdx].jersey, TEAMS[this.teamIdx].trim, '#ffffff', '#ffcc1f']);
         Floaters.spawn('+' + (e.pts || 0), -p.x, 3, p.z + 3, 'white');
         break;
       case 'comboLost': this.lastTier = 0; break;
-      case 'tackle': UI.big('TACKLED!', 'bad hold'); Sound.tackle(); Sound.setMode(null); Sound.cheer(0.35, 2); setTimeout(() => { Sound.whistle(true); Sound.groan(); }, 650); v.shake = 0.55; this.slowmo = 0.6; UI.hint(null); $('fxFire').classList.remove('on');
+      case 'tackle': UI.big('¡TACLEADO!', 'bad hold'); Sound.tackle(); Sound.setMode(null); Sound.cheer(0.35, 2); setTimeout(() => { Sound.whistle(true); Sound.groan(); }, 650); v.shake = 0.55; this.slowmo = 0.6; UI.hint(null); $('fxFire').classList.remove('on');
         v.emitTurf(-p.x, p.z, 25, { speed: 4, up: 4 }); break;
     }
     if (e.type !== 'coin' && e.type !== 'land' && e.type !== 'jump') this.coinChain = this.coinChain && e.type === 'cut' ? this.coinChain : 0;
@@ -3275,8 +3443,8 @@ const Game = {
     UI.set('hYards', String(Math.max(0, Math.floor(p.z))));
     UI.set('hScore', sc.total.toLocaleString());
     const yds = Math.max(0, Math.floor(p.z)), beat = this.best > 0 && yds > this.best;
-    UI.set('hBest', (beat ? yds : this.best).toLocaleString());
-    if (UI.cache.beat !== beat) { UI.cache.beat = beat; $('hBestBox').classList.toggle('beat', beat); $('hBestBox').querySelector('.lbl').textContent = beat ? 'NEW BEST' : 'BEST'; }
+    UI.set('hBest', this.best > 0 ? (beat ? yds : this.best).toLocaleString() : '—');
+    if (UI.cache.beat !== beat) { UI.cache.beat = beat; $('hBestBox').classList.toggle('beat', beat); $('hBestBox').querySelector('.lbl').textContent = beat ? 'NUEVO RÉCORD' : 'RÉCORD'; }
     $('hYardBar').style.width = (this.best > 0 ? Math.min(1, yds / this.best) * 100 : 0) + '%';
     UI.set('hLevel', String(s.difficulty.level));
     const combo = sc.combo, cs = $('hComboVal').parentNode;
@@ -3290,14 +3458,14 @@ const Game = {
     const fire = p.fireTime > 0, mb = $('hMeterBox');
     $('hMeter').style.width = (fire ? p.fireTime / CONFIG.FIRE_TIME : sc.meter) * 100 + '%';
     mb.classList.toggle('burning', fire); mb.classList.toggle('full', fire);
-    UI.set('hMeterLbl', fire ? 'ON FIRE · x2' : 'FIRE');
+    UI.set('hMeterLbl', fire ? 'EN LLAMAS · x2' : 'FUEGO');
     // estado
     const max = p.char.breakCharges, parts = [];
-    if (max > 0) { let h = '<span class="pill ice">BREAK'; for (let i = 0; i < max; i++) h += `<span class="pip${i < p.charges ? ' on' : ''}"></span>`; parts.push(h + '</span>'); }
-    if (p.shield) parts.push('<span class="pill ice">SHIELD</span>');
-    if (p.magnetTime > 0) parts.push(`<span class="pill red">MAGNET ${Math.ceil(p.magnetTime)}</span>`);
+    if (max > 0) { let h = '<span class="pill ice">ROMPE'; for (let i = 0; i < max; i++) h += `<span class="pip${i < p.charges ? ' on' : ''}"></span>`; parts.push(h + '</span>'); }
+    if (p.shield) parts.push('<span class="pill ice">ESCUDO</span>');
+    if (p.magnetTime > 0) parts.push(`<span class="pill red">IMÁN ${Math.ceil(p.magnetTime)}</span>`);
     if (p.doubleTime > 0) parts.push(`<span class="pill gold">2X ${Math.ceil(p.doubleTime)}</span>`);
-    if (!document.body.classList.contains('touch')) parts.push(p.spinCd > 0 ? `<span class="pill dim">SPIN ${p.spinCd.toFixed(1)}</span>` : '<span class="pill ice">SPIN ⇧</span>');
+    if (!document.body.classList.contains('touch')) parts.push(p.spinCd > 0 ? `<span class="pill dim">GIRO ${p.spinCd.toFixed(1)}</span>` : '<span class="pill ice">GIRO ⇧</span>');
     const html = parts.join('');
     if (UI.cache.status !== html) { UI.cache.status = html; $('hStatus').innerHTML = html; }
     const sf = p.stamina / p.char.staminaMax, sb = $('hStamBox');
@@ -3315,7 +3483,7 @@ const Game = {
       const n = Math.ceil(this.countdown);
       if (n !== this.lastCount && n > 0) { this.lastCount = n; UI.big(String(n)); Sound.beep(false); }
       if (this.countdown <= 0) {
-        UI.big('GO!', 'show go'); Sound.kickoff();
+        UI.big('¡YA!', 'show go'); Sound.kickoff();
         this.sim.start(); this.input.clear(); this.setState('playing'); this.runTime = 0;
       }
     } else if (this.state === 'playing') {
@@ -3327,7 +3495,7 @@ const Game = {
       if (this.hints && this.hintIdx < this.hints.length - 1 && this.runTime >= this.hints[this.hintIdx + 1][0]) { this.hintIdx++; UI.hint(this.hints[this.hintIdx][1]); }
       if (this.newsTimer > 0) { this.newsTimer -= dt; if (this.newsTimer <= 0) UI.hint(null); }
       const p = this.sim.player;
-      if (!this.recordShown && this.best > 15 && p.z > this.best && this.sim.state === 'running') { this.recordShown = true; UI.popup('NEW RECORD!', 'fire'); this.view.stadium.flashRibbon('NEW RECORD', 3); Sound.big(); Sound.cheer(0.4, 2); Sound.recordSting(); UI.flash(); }
+      if (!this.recordShown && this.best > 15 && p.z > this.best && this.sim.state === 'running') { this.recordShown = true; UI.popup('¡NUEVO RÉCORD!', 'fire'); this.view.stadium.flashRibbon('¡NUEVO RÉCORD!', 3); Sound.big(); Sound.cheer(0.4, 2); Sound.recordSting(); UI.flash(); }
       Sound.setIntensity(this.sim.difficulty.level, p.fireTime > 0);
 
       this.updateHud(false);
@@ -3353,3 +3521,5 @@ catch (err) {
 </script>
 </body>
 </html>
+
+</body></html>
